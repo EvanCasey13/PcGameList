@@ -7,11 +7,13 @@ import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.activity_games_list.*
+import org.jetbrains.anko.intentFor
 import org.jetbrains.anko.startActivityForResult
 import org.wit.pcgamelist.R
 import org.wit.pcgamelist.main.MainApp
+import org.wit.pcgamelist.models.PCGamesModel
 
-class GameListActivity : AppCompatActivity() {
+class GameListActivity : AppCompatActivity(), GameAdapter.GameListener {
     lateinit var app: MainApp
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -25,7 +27,7 @@ class GameListActivity : AppCompatActivity() {
 
         val layoutManager = LinearLayoutManager(this)
         recyclerView.layoutManager = layoutManager
-        recyclerView.adapter = GameAdapter(app.games)
+        recyclerView.adapter = GameAdapter(app.games.findAll(), this)
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -38,6 +40,10 @@ class GameListActivity : AppCompatActivity() {
             R.id.item_add -> startActivityForResult<GameActivity>(0)
         }
         return super.onOptionsItemSelected(item)
+    }
+
+    override fun onGameClick(game: PCGamesModel) {
+        startActivityForResult(intentFor<GameActivity>().putExtra("game_edit", game), 0)
     }
 
 }

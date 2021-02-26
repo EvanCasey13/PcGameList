@@ -16,31 +16,44 @@ import org.wit.pcgamelist.models.PCGamesModel
 class GameActivity : AppCompatActivity(), AnkoLogger {
 
     var game = PCGamesModel()
-   lateinit var app: MainApp
+    lateinit var app: MainApp
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_pcgames)
         app = application as MainApp
+        var edit = false
+
+        var addBtnFeedback: String = getString(R.string.text_addBtn)
+        var saveBtn: String = getString(R.string.button_saveGame)
 
         //Add action bar and set title
         toolbarAdd.title = title
         setSupportActionBar(toolbarAdd)
 
+        if (intent.hasExtra("game_edit")) {
+            game = intent.extras?.getParcelable<PCGamesModel>("game_edit")!!
+            edit = true
+            gameTitle.setText(game.title)
+            gameDescription.setText(game.description)
+
+            btnAdd.text = saveBtn
+        }
+
         btnAdd.setOnClickListener() {
             game.title = gameTitle.text.toString()
             game.description = gameDescription.text.toString()
-            if (game.title.isNotEmpty()) {
-                app.games.add(game.copy())
-                info("add Button Pressed: ${game}")
-                for (i in app.games.indices) {
-                    info("Game[$i]:${app.games[i]}")
-                }
-                setResult(AppCompatActivity.RESULT_OK)
-                finish()
+            if (game.title.isEmpty()) {
+                toast(addBtnFeedback)
             } else {
-                toast("Please Enter a title & description")
+               if (edit){
+                   app.games.update(game.copy())
+               } else {
+                   app.games.create(game.copy())
+               }
             }
+            info ("add Button Pressed: $gameTitle, $gameDescription")
+            finish()
         }
     }
 

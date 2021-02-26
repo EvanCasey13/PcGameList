@@ -5,4 +5,6 @@
     <string name="hint_gameDescription">Game Description</string>
     <string name="menu_addGame">Add</string>
     <string name="menu_cancelGame">Cancel</string>
+    <string name="text_addBtn">Please Enter a title and description</string>
+    <string name="button_saveGame">Save Game</string>
 </resources>
