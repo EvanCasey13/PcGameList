@@ -25,7 +25,6 @@ class GameActivity : AppCompatActivity(), AnkoLogger {
         var edit = false
 
         var addBtnFeedback: String = getString(R.string.text_addBtn)
-        var saveBtn: String = getString(R.string.button_saveGame)
 
         //Add action bar and set title
         toolbarAdd.title = title
@@ -37,7 +36,7 @@ class GameActivity : AppCompatActivity(), AnkoLogger {
             gameTitle.setText(game.title)
             gameDescription.setText(game.description)
 
-            btnAdd.text = saveBtn
+            btnAdd.setText(R.string.button_saveGame)
         }
 
         btnAdd.setOnClickListener() {
