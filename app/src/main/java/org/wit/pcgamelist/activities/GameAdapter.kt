@@ -4,12 +4,15 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.card_game.view.*
 import org.wit.pcgamelist.R
+import org.wit.pcgamelist.activities.GameListActivity
 import org.wit.pcgamelist.models.PCGamesModel
 
-class GameAdapter constructor(private var games: List<PCGamesModel>,
-    private val listener: GameListener) : RecyclerView.Adapter<GameAdapter.MainHolder>() {
+class GameAdapter(
+        private val games: List<PCGamesModel>,
+        private val listener: GameListActivity) : RecyclerView.Adapter<GameAdapter.MainHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainHolder {
+
         return MainHolder(
             LayoutInflater.from(parent.context).inflate(
                 R.layout.card_game,
@@ -38,4 +41,5 @@ class GameAdapter constructor(private var games: List<PCGamesModel>,
             itemView.setOnClickListener { listener.onGameClick(game) }
         }
     }
+
 }

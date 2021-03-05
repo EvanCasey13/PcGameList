@@ -1,9 +1,12 @@
 package org.wit.pcgamelist.activities
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import androidx.appcompat.app.AppCompatActivity
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.ktx.database
+import com.google.firebase.ktx.Firebase
 import kotlinx.android.synthetic.main.activity_pcgames.*
 import org.jetbrains.anko.AnkoLogger
 import org.jetbrains.anko.info
@@ -18,7 +21,12 @@ class GameActivity : AppCompatActivity(), AnkoLogger {
     var game = PCGamesModel()
     lateinit var app: MainApp
 
+    lateinit var database: DatabaseReference
+
     override fun onCreate(savedInstanceState: Bundle?) {
+
+        database = Firebase.database.reference
+
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_pcgames)
         app = application as MainApp
@@ -42,16 +50,19 @@ class GameActivity : AppCompatActivity(), AnkoLogger {
         btnAdd.setOnClickListener() {
             game.title = gameTitle.text.toString()
             game.description = gameDescription.text.toString()
+
             if (game.title.isEmpty()) {
                 toast(addBtnFeedback)
             } else {
                if (edit){
                    app.games.update(game.copy())
+                   updateGame()
                } else {
                    app.games.create(game.copy())
+                   writeNewGame()
                }
             }
-            info ("add Button Pressed: $gameTitle, $gameDescription")
+            info("add Button Pressed: $gameTitle, $gameDescription")
             finish()
         }
     }
@@ -66,6 +77,18 @@ class GameActivity : AppCompatActivity(), AnkoLogger {
             R.id.item_cancel -> startActivityForResult<GameListActivity>(0)
         }
         return super.onOptionsItemSelected(item)
+    }
+
+   private fun writeNewGame(){
+        val game = game
+
+        val gameId = database.push().key
+
+        database.child("Games").child(gameId!!).setValue(game)
+    }
+
+    private fun updateGame() {
+
     }
 
 }

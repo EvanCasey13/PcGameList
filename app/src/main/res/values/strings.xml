@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name" translatable="false">PcGameList</string>
+    <string name="app_name" translatable="false">MyPcGameListApp</string>
     <string name="button_addGame" translatable="false">Add Game</string>
     <string name="hint_gameTitle" translatable="false">Game Title</string>
     <string name="hint_gameDescription">Game Description</string>
@@ -7,4 +7,20 @@
     <string name="menu_cancelGame">Cancel</string>
     <string name="text_addBtn">Please Enter a title and description</string>
     <string name="button_saveGame">Save Game</string>
+    <string name="search">Search</string>
+    <string name="homepageImage">Homepage Image</string>
+    <string name="my_listHomeButton">My List</string>
+    <string name="databaseHomeButton">Enter Database</string>
+    <string name="content_description_media">homepage image</string>
+    <string name="databaseCardDescription">A list of all games located on our database</string>
+    <string name="databaseCardTitle">Game Database</string>
+    <string name="databaseCardSubTitle">Welcome to our collection of games</string>
+    <string name="listCardDescription">A list of all your games</string>
+    <string name="listCardTitle">My List</string>
+    <string name="listCardSubTitle">This is the list of all your games in three different categories</string>
+    <string name="back">Exit</string>
+    <string name="gameDetailsButton">Details</string>
+    <string name="gameTitle" />
+    <string name="gameSummary" />
+    <string name="gamesList" />
 </resources>

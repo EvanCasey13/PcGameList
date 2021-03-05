@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "792895810643",
+    "firebase_url": "https://pc-game-list-app-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "pc-game-list-app",
+    "storage_bucket": "pc-game-list-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:792895810643:android:aa4ddda1f3a822c1016aa6",
+        "android_client_info": {
+          "package_name": "org.wit.pcgamelist"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "792895810643-ekkkp5oqgl0f9jg33peualm1juaa79lr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD_K9gt8LmNtqiT-DnfCv3FP1DXoyafzD4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "792895810643-ekkkp5oqgl0f9jg33peualm1juaa79lr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

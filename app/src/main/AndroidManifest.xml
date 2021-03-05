@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="org.wit.pcgamelist">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:name=".main.MainApp"
         android:allowBackup="true"
@@ -13,6 +15,10 @@
         <activity android:name=".activities.GameActivity">
         </activity>
         <activity android:name=".activities.GameListActivity">
+        </activity>
+        <activity android:name=".activities.DatabaseListActivity">
+        </activity>
+        <activity android:name=".activities.HomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

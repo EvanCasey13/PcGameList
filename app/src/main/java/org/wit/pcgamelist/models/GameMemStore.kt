@@ -6,7 +6,7 @@ import org.jetbrains.anko.info
 var lastId = 0L
 
 internal fun getId(): Long {
-    return lastId++
+    return lastId
 }
 
 class GameMemStore : GameStore, AnkoLogger {
@@ -24,7 +24,7 @@ class GameMemStore : GameStore, AnkoLogger {
     }
 
     override fun update(game: PCGamesModel) {
-    var foundGame: PCGamesModel? = games.find { g -> g.id == game.id}
+        var foundGame: PCGamesModel? = games.find { g -> g.id == game.id}
         if(foundGame != null){
             foundGame.title = game.title
             foundGame.description = game.description
