@@ -17,10 +17,11 @@
     <string name="databaseCardSubTitle">Welcome to our collection of games</string>
     <string name="listCardDescription">A list of all your games</string>
     <string name="listCardTitle">My List</string>
-    <string name="listCardSubTitle">This is the list of all your games in three different categories</string>
+    <string name="listCardSubTitle">This is the list of all your games added from our database</string>
     <string name="back">Exit</string>
     <string name="gameDetailsButton">Details</string>
     <string name="gameTitle" />
-    <string name="gameSummary" />
-    <string name="gamesList" />
+    <string name="gameRating">Rating :</string>
+    <string name="gamesReleasedDate">Release Data :</string>
+    <string name="Next">Next Page</string>
 </resources>

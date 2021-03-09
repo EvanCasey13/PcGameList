@@ -6,7 +6,7 @@ import org.jetbrains.anko.info
 var lastId = 0L
 
 internal fun getId(): Long {
-    return lastId
+    return lastId++
 }
 
 class GameMemStore : GameStore, AnkoLogger {

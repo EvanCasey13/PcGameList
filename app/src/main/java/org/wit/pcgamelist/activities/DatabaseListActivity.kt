@@ -1,17 +1,14 @@
 package org.wit.pcgamelist.activities
 
-import GameAdapter
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
-import android.widget.LinearLayout
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
-import com.squareup.picasso.Picasso
-import kotlinx.android.synthetic.main.activity_games_list.*
 import kotlinx.android.synthetic.main.activity_games_list.toolbar
 import kotlinx.android.synthetic.main.database_list_activity.*
 import org.jetbrains.anko.AnkoLogger
@@ -19,6 +16,10 @@ import org.jetbrains.anko.startActivityForResult
 import org.wit.pcgamelist.R
 import org.wit.pcgamelist.main.MainApp
 import org.wit.pcgamelist.models.Game
+import org.wit.pcgamelist.models.GamesApi
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class DatabaseListActivity: AppCompatActivity(), AnkoLogger {
 
@@ -38,17 +39,29 @@ class DatabaseListActivity: AppCompatActivity(), AnkoLogger {
         toolbar.title = title
         setSupportActionBar(toolbar)
 
-        val picasso = Picasso.get()
+        GamesApi().getGames().enqueue(object: Callback<Game>{
+            override fun onResponse(call: Call<Game>, response: Response<Game>) {
 
-        val games = listOf(
-                Game("The Witcher 3", "Wild hunt", "CD Project red", "", true),
-                Game("The Witcher 3", "Wild hunt", "CD Project red", "", true),
+              val games = response.body()
 
-        )
+              games?.let {
+                  showGames(it.results)
+              }
 
+
+            }
+            override fun onFailure(call: Call <Game>, t: Throwable) {
+                Toast.makeText(applicationContext, t.message, Toast.LENGTH_LONG).show()
+            }
+
+        })
+    }
+
+    private fun showGames(games: List<Game>){
         games_recycler.layoutManager = LinearLayoutManager(this)
         games_recycler.adapter = DatabaseListAdapter(games)
     }
+
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu_lists, menu)
@@ -57,7 +70,8 @@ class DatabaseListActivity: AppCompatActivity(), AnkoLogger {
 
      override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
-            R.id.app_bar_exit -> startActivityForResult<HomeActivity>(0)
+            R.id.app_bar_nextPage -> startActivityForResult<DatabaseListActivity>(0)
+
         }
         return super.onOptionsItemSelected(item)
     }
