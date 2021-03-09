@@ -5,6 +5,8 @@ import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.ktx.database
@@ -16,6 +18,7 @@ import org.jetbrains.anko.startActivityForResult
 import org.wit.pcgamelist.R
 import org.wit.pcgamelist.main.MainApp
 import org.wit.pcgamelist.models.Game
+import org.wit.pcgamelist.models.GameViewModel
 import org.wit.pcgamelist.models.GamesApi
 import retrofit2.Call
 import retrofit2.Callback
@@ -39,41 +42,33 @@ class DatabaseListActivity: AppCompatActivity(), AnkoLogger {
         toolbar.title = title
         setSupportActionBar(toolbar)
 
-        GamesApi().getGames().enqueue(object: Callback<Game>{
-            override fun onResponse(call: Call<Game>, response: Response<Game>) {
+        val adapter = DatabaseListAdapter()
 
-              val games = response.body()
-
-              games?.let {
-                  showGames(it.results)
-              }
-
-
-            }
-            override fun onFailure(call: Call <Game>, t: Throwable) {
-                Toast.makeText(applicationContext, t.message, Toast.LENGTH_LONG).show()
-            }
-
-        })
-    }
-
-    private fun showGames(games: List<Game>){
         games_recycler.layoutManager = LinearLayoutManager(this)
-        games_recycler.adapter = DatabaseListAdapter(games)
+
+        val itemViewModel = ViewModelProviders.of(this)
+            .get(GameViewModel::class.java)
+
+        itemViewModel.gamePagedList.observe(this, {
+            adapter.submitList(it)
+        })
+
+        games_recycler.adapter = adapter
+
     }
 
-
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.menu_lists, menu)
-        return super.onCreateOptionsMenu(menu)
-    }
-
-     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when (item.itemId) {
-            R.id.app_bar_nextPage -> startActivityForResult<DatabaseListActivity>(0)
-
+        override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+            menuInflater.inflate(R.menu.menu_lists, menu)
+            return super.onCreateOptionsMenu(menu)
         }
-        return super.onOptionsItemSelected(item)
-    }
+
+        override fun onOptionsItemSelected(item: MenuItem): Boolean {
+            when (item.itemId) {
+                R.id.app_bar_nextPage -> startActivityForResult<DatabaseListActivity>(0)
+
+            }
+            return super.onOptionsItemSelected(item)
+        }
+
 
 }

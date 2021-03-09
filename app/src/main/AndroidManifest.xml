@@ -12,10 +12,6 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.PcGameList">
-        <activity android:name=".activities.GameActivity">
-        </activity>
-        <activity android:name=".activities.GameListActivity">
-        </activity>
         <activity android:name=".activities.DatabaseListActivity">
         </activity>
         <activity android:name=".activities.HomeActivity">

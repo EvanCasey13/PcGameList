@@ -45,7 +45,7 @@
 
                         <!-- Title, secondary and supporting text -->
                         <TextView
-                            android:id="@+id/textViewTitle"
+                            android:id="@+id/gameViewTitle"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/gameTitle"
@@ -53,7 +53,7 @@
                             android:textColor="@color/gold" />
 
                         <TextView
-                            android:id="@+id/textViewRating"
+                            android:id="@+id/gameViewRating"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="8dp"
@@ -62,7 +62,7 @@
                             android:textColor="#FFFFFF" />
 
                         <TextView
-                            android:id="@+id/textViewReleased"
+                            android:id="@+id/gameViewReleased"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="16dp"

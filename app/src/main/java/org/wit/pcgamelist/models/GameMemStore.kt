@@ -1,4 +1,4 @@
-package org.wit.pcgamelist.models
+/*package org.wit.pcgamelist.models
 
 import org.jetbrains.anko.AnkoLogger
 import org.jetbrains.anko.info
@@ -36,4 +36,4 @@ class GameMemStore : GameStore, AnkoLogger {
         games.forEach{ info("$it") }
     }
 
-}
+}*/
