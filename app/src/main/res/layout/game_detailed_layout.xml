@@ -15,7 +15,7 @@
             android:orientation="vertical">
 
             <com.google.android.material.card.MaterialCardView
-                android:id="@+id/gameCard"
+                android:id="@+id/gameDetailedCard"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
@@ -25,15 +25,15 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="710dp"
                     android:background="@color/silver"
                     android:orientation="vertical">
 
                     <!-- Media -->
                     <ImageView
-                        android:id="@+id/gameImg"
+                        android:id="@+id/gameDetailedImg"
                         android:layout_width="match_parent"
-                        android:layout_height="194dp"
+                        android:layout_height="377dp"
                         android:contentDescription="@string/content_description_media"
                         android:scaleType="centerCrop" />
 
@@ -45,7 +45,7 @@
 
                         <!-- Title, secondary and supporting text -->
                         <TextView
-                            android:id="@+id/gameViewTitle"
+                            android:id="@+id/gameDetailedTitle"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/gameTitle"
@@ -53,7 +53,7 @@
                             android:textColor="@color/gold" />
 
                         <TextView
-                            android:id="@+id/gameViewRating"
+                            android:id="@+id/gameDetailedRating"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="8dp"
@@ -62,7 +62,7 @@
                             android:textColor="#FFFFFF" />
 
                         <TextView
-                            android:id="@+id/gameViewReleased"
+                            android:id="@+id/gameDetailedReleased"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="16dp"
@@ -77,18 +77,13 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_margin="8dp"
-                        android:orientation="horizontal">
+                        android:orientation="horizontal" />
 
-                        <com.google.android.material.button.MaterialButton
-                            android:id="@+id/databaseButton"
-                            style="?attr/borderlessButtonStyle"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginEnd="8dp"
-                            android:text="@string/gameDetailsButton"
-                            android:textColor="#DDC8FF" />
-
-                    </LinearLayout>
+                    <TextView
+                        android:id="@+id/gameDetailedDescription"
+                        android:layout_width="match_parent"
+                        android:layout_height="201dp"
+                        android:text="TextView" />
 
                 </LinearLayout>
 

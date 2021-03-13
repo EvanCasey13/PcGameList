@@ -28,7 +28,7 @@
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/lightblue"/>
+                android:background="@color/silver"/>
         </com.google.android.material.appbar.AppBarLayout>
 
         <com.google.android.material.card.MaterialCardView
@@ -43,7 +43,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="416dp"
-                android:background="#2BA5AF"
+                android:background="@color/silver"
                 android:orientation="vertical">
 
                 <!-- Media -->
@@ -121,7 +121,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="396dp"
-                android:background="#2BA5AF"
+                android:background="@color/silver"
                 android:orientation="vertical">
 
                 <!-- Media -->

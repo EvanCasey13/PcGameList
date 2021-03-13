@@ -50,8 +50,6 @@ class DatabaseListAdapter : PagedListAdapter<Game, DatabaseListAdapter.GameViewH
             override fun areItemsTheSame(oldItem: Game, newItem: Game): Boolean  =
                 oldItem.name == newItem.name
 
-
-
             override fun areContentsTheSame(oldItem: Game, newItem: Game): Boolean =
                 newItem == oldItem
 

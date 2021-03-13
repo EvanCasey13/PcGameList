@@ -13,8 +13,6 @@ import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 import com.squareup.picasso.Picasso
-import kotlinx.android.synthetic.main.activity_games_list.*
-import kotlinx.android.synthetic.main.activity_games_list.toolbar
 import kotlinx.android.synthetic.main.mainactivity_pcgames.*
 import org.jetbrains.anko.AnkoLogger
 import org.jetbrains.anko.startActivityForResult
