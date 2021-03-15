@@ -3,11 +3,7 @@ package org.wit.pcgamelist.activities
 import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
-import android.view.MenuItem
-import android.view.View
 import android.widget.Button
-import android.widget.ImageView
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.ktx.database
@@ -15,10 +11,9 @@ import com.google.firebase.ktx.Firebase
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.mainactivity_pcgames.*
 import org.jetbrains.anko.AnkoLogger
-import org.jetbrains.anko.startActivityForResult
 import org.wit.pcgamelist.R
 import org.wit.pcgamelist.main.MainApp
-import retrofit2.Retrofit
+import org.wit.pcgamelist.singlegamedetails.SingleGame
 
 
 class HomeActivity : AppCompatActivity(), AnkoLogger {
@@ -48,6 +43,11 @@ class HomeActivity : AppCompatActivity(), AnkoLogger {
 
             onDatabaseButtonPressed()
 
+            buttonDetailsOfSingle.setOnClickListener {
+                val intent = Intent(this, SingleGame::class.java)
+                intent.putExtra("id", 3498)
+                this.startActivity(intent)
+            }
 
         }
 

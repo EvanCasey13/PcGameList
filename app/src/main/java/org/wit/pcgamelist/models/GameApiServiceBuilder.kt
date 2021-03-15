@@ -1,8 +1,6 @@
 package org.wit.pcgamelist.models
 
-import androidx.appcompat.app.AppCompatActivity
 import okhttp3.OkHttpClient
-import org.jetbrains.anko.AnkoLogger
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 

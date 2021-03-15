@@ -14,6 +14,8 @@
         android:theme="@style/Theme.PcGameList">
         <activity android:name=".activities.DatabaseListActivity">
         </activity>
+        <activity android:name=".singlegamedetails.SingleGame">
+        </activity>
         <activity android:name=".activities.HomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

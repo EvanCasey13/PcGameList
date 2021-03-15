@@ -24,3 +24,4 @@ data class GameResponse (
         @SerializedName("results")
         var results: List<Game>
 )
+

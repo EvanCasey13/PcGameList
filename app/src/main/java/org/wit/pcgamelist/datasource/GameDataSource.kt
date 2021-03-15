@@ -4,7 +4,7 @@ import androidx.paging.PageKeyedDataSource
 import org.wit.pcgamelist.models.Game
 import org.wit.pcgamelist.models.GameApiServiceBuilder
 import org.wit.pcgamelist.models.GameResponse
-import org.wit.pcgamelist.models.GamesApi
+import org.wit.pcgamelist.data.api.GamesApi
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
