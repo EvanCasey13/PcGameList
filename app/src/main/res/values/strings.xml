@@ -24,4 +24,11 @@
     <string name="gameRating">Rating :</string>
     <string name="gamesReleasedDate">Release Data :</string>
     <string name="Next">Next Page</string>
+    <string name="sub_title">SubTitle</string>
+    <string name="game_info">Game Info</string>
+    <string name="release_date">Release Date:</string>
+    <string name="rating">Rating:</string>
+    <string name="playtime">Playtime:</string>
+    <string name="description">Description</string>
+    <string name="gametitle">gameTitle</string>
 </resources>
