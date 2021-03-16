@@ -1,5 +1,6 @@
 package org.wit.pcgamelist.activities
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
@@ -14,6 +15,7 @@ import org.jetbrains.anko.AnkoLogger
 import org.wit.pcgamelist.R
 import org.wit.pcgamelist.main.MainApp
 import org.wit.pcgamelist.models.GameViewModel
+import org.wit.pcgamelist.singlegamedetails.SingleGame
 
 class DatabaseListActivity: AppCompatActivity(), AnkoLogger {
 
@@ -33,7 +35,7 @@ class DatabaseListActivity: AppCompatActivity(), AnkoLogger {
         toolbar.title = title
         setSupportActionBar(toolbar)
 
-        val adapter = DatabaseListAdapter()
+        val adapter = DatabaseListAdapter(this)
 
         games_recycler.layoutManager = LinearLayoutManager(this)
 
@@ -45,6 +47,7 @@ class DatabaseListActivity: AppCompatActivity(), AnkoLogger {
         })
 
         games_recycler.adapter = adapter
+
 
     }
 

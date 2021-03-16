@@ -1,5 +1,7 @@
 package org.wit.pcgamelist.activities
 
+import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,8 +12,9 @@ import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.layout_game.view.*
 import org.wit.pcgamelist.R
 import org.wit.pcgamelist.models.Game
+import org.wit.pcgamelist.singlegamedetails.SingleGame
 
-class DatabaseListAdapter : PagedListAdapter<Game, DatabaseListAdapter.GameViewHolder>(GAME_COMPARATOR) {
+class DatabaseListAdapter(public val context: Context) : PagedListAdapter<Game, DatabaseListAdapter.GameViewHolder>(GAME_COMPARATOR) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GameViewHolder {
     val view  = LayoutInflater.from(parent.context)
@@ -23,7 +26,7 @@ class DatabaseListAdapter : PagedListAdapter<Game, DatabaseListAdapter.GameViewH
     override fun onBindViewHolder(holder: GameViewHolder, position: Int) {
 
         val game = getItem(position)
-        game?.let { holder.bind(game) }
+        game?.let { getItem(position)?.let { it1 -> holder.bind(it1, context) } }
     }
 
     class GameViewHolder(view : View) : RecyclerView.ViewHolder(view) {
@@ -33,7 +36,7 @@ class DatabaseListAdapter : PagedListAdapter<Game, DatabaseListAdapter.GameViewH
         private val gameReleasedDate = view.gameViewReleased
         private val gameRating = view.gameViewRating
 
-        fun bind(game : Game){
+        fun bind(game : Game, context:Context){
             gameName.text = game.name
             gameReleasedDate.text = game.released
             gameRating.text = game.rating.toString()
@@ -41,7 +44,15 @@ class DatabaseListAdapter : PagedListAdapter<Game, DatabaseListAdapter.GameViewH
             Glide.with(gameImage.context)
                 .load(game.background_image)
                 .into(gameImage)
+
+            gameImage.setOnClickListener {
+                val intent = Intent(context, SingleGame::class.java)
+                intent.putExtra("id", game.id)
+                context.startActivity(intent)
+            }
         }
+
+
 
     }
 

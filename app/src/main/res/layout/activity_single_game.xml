@@ -46,13 +46,19 @@
                         android:textSize="18sp"/>
 
                     <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:text="Release Date: "
+                        android:textSize="12sp"
+                        android:textStyle="bold"/>
+
+                    <TextView
                         android:id="@+id/game_released"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="2dp"
-                        android:text="@string/release_date"
-                        android:textSize="12sp"
-                        android:textStyle="bold"/>
+                        android:textSize="12sp"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -68,11 +74,18 @@
                         android:orientation="horizontal">
 
                         <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="2dp"
+                            android:text="Metacritic: "
+                            android:textSize="12sp"
+                            android:textStyle="bold"/>
+
+                        <TextView
                             android:id="@+id/game_rating"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="2dp"
-                            android:text="@string/rating"
                             android:textSize="12sp"
                             android:textStyle="bold"/>
 
@@ -83,13 +96,19 @@
                         android:layout_height="match_parent"
                         android:orientation="horizontal">
 
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="2dp"
+                            android:text="Playtime (Hours): "
+                            android:textSize="12sp"
+                            android:textStyle="bold"/>
 
                         <TextView
                             android:id="@+id/game_playtime"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="2dp"
-                            android:text="@string/playtime"
                             android:textSize="12sp"
                             android:textStyle="bold"/>
 

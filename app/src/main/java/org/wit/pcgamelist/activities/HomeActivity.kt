@@ -43,11 +43,7 @@ class HomeActivity : AppCompatActivity(), AnkoLogger {
 
             onDatabaseButtonPressed()
 
-            buttonDetailsOfSingle.setOnClickListener {
-                val intent = Intent(this, SingleGame::class.java)
-                intent.putExtra("id", 3498)
-                this.startActivity(intent)
-            }
+
 
         }
 
