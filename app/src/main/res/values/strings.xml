@@ -6,7 +6,7 @@
     <string name="menu_addGame">Add</string>
     <string name="menu_cancelGame">Cancel</string>
     <string name="text_addBtn">Please Enter a title and description</string>
-    <string name="button_saveGame">Save Game</string>
+    <string name="button_saveReview">Save Review</string>
     <string name="search">Search</string>
     <string name="homepageImage">Homepage Image</string>
     <string name="my_listHomeButton">My List</string>
