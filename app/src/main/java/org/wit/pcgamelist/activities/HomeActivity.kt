@@ -13,7 +13,6 @@ import kotlinx.android.synthetic.main.mainactivity_pcgames.*
 import org.jetbrains.anko.AnkoLogger
 import org.wit.pcgamelist.R
 import org.wit.pcgamelist.main.MainApp
-import org.wit.pcgamelist.singlegamedetails.SingleGame
 
 
 class HomeActivity : AppCompatActivity(), AnkoLogger {
@@ -44,6 +43,10 @@ class HomeActivity : AppCompatActivity(), AnkoLogger {
             onDatabaseButtonPressed()
 
 
+            reviewsButton.setOnClickListener {
+                val intent = Intent(this, ReviewListActivity::class.java)
+                startActivity(intent)
+            }
 
         }
 

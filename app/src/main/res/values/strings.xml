@@ -31,4 +31,8 @@
     <string name="playtime">Playtime:</string>
     <string name="description">Description</string>
     <string name="gametitle">gameTitle</string>
+    <string name="button_addReview">Add review</string>
+    <string name="hint_reviewDescription">Review description</string>
+    <string name="hint_gameReviewTitle">Game title</string>
+    <string name="menu_addReview" />
 </resources>
