@@ -16,6 +16,8 @@
         </activity>
         <activity android:name=".activities.ReviewActivity">
         </activity>
+        <activity android:name=".activities.ReviewListActivity">
+        </activity>
         <activity android:name=".singlegamedetails.SingleGame">
         </activity>
         <activity android:name=".activities.HomeActivity">

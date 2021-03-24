@@ -44,7 +44,7 @@ class HomeActivity : AppCompatActivity(), AnkoLogger {
 
 
             reviewsButton.setOnClickListener {
-                val intent = Intent(this, ReviewActivity::class.java)
+                val intent = Intent(this, ReviewListActivity::class.java)
                 startActivity(intent)
             }
 

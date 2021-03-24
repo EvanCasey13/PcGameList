@@ -23,10 +23,6 @@ class ReviewActivity : AppCompatActivity(), AnkoLogger {
             super.onCreate(savedInstanceState)
             setContentView(R.layout.review_activity)
             app = application as MainApp
-            var edit = false
-
-            var addBtnFeedback: String = getString(R.string.text_addBtn)
-            var saveBtn: String = getString(R.string.button_saveReview)
 
             //Add action bar and set title
             toolbar.title = title

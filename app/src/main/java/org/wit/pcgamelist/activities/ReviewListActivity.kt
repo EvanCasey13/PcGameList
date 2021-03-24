@@ -1,0 +1,74 @@
+package org.wit.pcgamelist.activities
+
+import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
+import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.firebase.database.*
+import kotlinx.android.synthetic.main.activity_games_list.*
+import kotlinx.android.synthetic.main.activity_games_list.recyclerView
+import kotlinx.android.synthetic.main.review_activity.toolbar
+import kotlinx.android.synthetic.main.review_list_activity.*
+import org.jetbrains.anko.startActivityForResult
+import org.wit.pcgamelist.R
+import org.wit.pcgamelist.main.MainApp
+import org.wit.pcgamelist.models.ReviewModel
+
+class ReviewListActivity : AppCompatActivity() {
+
+    lateinit var app: MainApp
+
+    lateinit var ref: DatabaseReference
+
+    lateinit var reviewList: MutableList<ReviewModel>
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.review_list_activity)
+
+        app = application as MainApp
+
+        ref = FirebaseDatabase.getInstance().getReference("reviews")
+        reviewList = mutableListOf()
+
+        //Add action bar and set title
+        toolbar.title = title
+        setSupportActionBar(toolbar)
+
+        val layoutManager = LinearLayoutManager(this)
+        recyclerView.layoutManager = layoutManager
+
+        ref.addValueEventListener(object: ValueEventListener{
+            override fun onDataChange(snapshot: DataSnapshot) {
+             if (snapshot.exists()){
+                 reviewList.clear()
+                 for (r in snapshot.children){
+
+                     val review = r.getValue(ReviewModel::class.java)
+                     reviewList.add(review!!)
+                 }
+                 val adapter = ReviewAdapter(reviewList)
+                 recyclerView.adapter = adapter
+             }
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+
+            }
+
+        })
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu_review, menu)
+        return super.onCreateOptionsMenu(menu)
+    }
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.item_add -> startActivityForResult<ReviewActivity>(0)
+        }
+        return super.onOptionsItemSelected(item)
+    }
+
+}
