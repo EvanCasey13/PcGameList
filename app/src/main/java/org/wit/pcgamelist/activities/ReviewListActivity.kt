@@ -11,6 +11,7 @@ import kotlinx.android.synthetic.main.activity_games_list.recyclerView
 import kotlinx.android.synthetic.main.review_activity.toolbar
 import kotlinx.android.synthetic.main.review_list_activity.*
 import org.jetbrains.anko.startActivityForResult
+import org.jetbrains.anko.toast
 import org.wit.pcgamelist.R
 import org.wit.pcgamelist.main.MainApp
 import org.wit.pcgamelist.models.ReviewModel
@@ -54,9 +55,8 @@ class ReviewListActivity : AppCompatActivity() {
             }
 
             override fun onCancelled(error: DatabaseError) {
-
+                toast(error.message)
             }
-
         })
     }
 

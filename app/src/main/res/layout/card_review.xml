@@ -24,5 +24,14 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/reviewCardTitle" />
 
+        <TextView
+            android:id="@+id/reviewCardUpdate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingStart="220dp"
+            android:paddingEnd="200dp"
+            android:paddingTop="50dp"
+            />
+
     </RelativeLayout>
 </androidx.cardview.widget.CardView>
