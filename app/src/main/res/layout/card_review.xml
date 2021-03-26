@@ -16,7 +16,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
-            android:textSize="30sp" />
+            android:textSize="20sp" />
 
         <TextView
             android:id="@+id/reviewCardDescription"
@@ -28,10 +28,19 @@
             android:id="@+id/reviewCardUpdate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingStart="220dp"
+            android:paddingStart="60dp"
             android:paddingEnd="200dp"
             android:paddingTop="50dp"
             />
+
+        <TextView
+            android:id="@+id/reviewCardDelete"
+            android:layout_width="161dp"
+            android:layout_height="43dp"
+            android:layout_marginStart="290dp"
+            android:layout_marginTop="15dp"
+            android:paddingBottom="20dp"
+            android:text="@string/delete" />
 
     </RelativeLayout>
 </androidx.cardview.widget.CardView>

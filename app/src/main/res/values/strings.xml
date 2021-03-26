@@ -41,4 +41,5 @@
     <string name="reviewCardSubTitle">This is a list of all your reviews</string>
     <string name="reviewsCardDescription">Reviews of you favourite games</string>
     <string name="my_reviewsHomeButton">My Reviews</string>
+    <string name="delete">Delete</string>
 </resources>

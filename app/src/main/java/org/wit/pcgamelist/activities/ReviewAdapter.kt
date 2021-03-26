@@ -35,6 +35,7 @@ class ReviewAdapter constructor(private val reviews: List<ReviewModel>) : Recycl
     class MainHolder constructor(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         val textViewUpdate = itemView.reviewCardUpdate
+        val textViewDelete = itemView.reviewCardDelete
 
         fun bind(review: ReviewModel) {
             itemView.reviewCardTitle.text = review.gameTitle
@@ -43,6 +44,12 @@ class ReviewAdapter constructor(private val reviews: List<ReviewModel>) : Recycl
             textViewUpdate.setOnClickListener {
                 showUpdateDialog(review)
             }
+
+            textViewDelete.setOnClickListener {
+
+                deleteReview(review)
+            }
+
         }
 
         fun showUpdateDialog(review: ReviewModel) {
@@ -89,6 +96,14 @@ class ReviewAdapter constructor(private val reviews: List<ReviewModel>) : Recycl
 
             val alert = builder.create()
             alert.show()
+        }
+
+        fun deleteReview(review: ReviewModel){
+
+            val dbReview = FirebaseDatabase.getInstance().getReference("reviews")
+
+            dbReview.child(review.id).setValue(null)
+
         }
     }
 }
