@@ -50,7 +50,8 @@
                             android:layout_height="wrap_content"
                             android:text="@string/gameTitle"
                             android:textAppearance="?attr/textAppearanceHeadline6"
-                            android:textColor="@color/gold" />
+                            android:textColor="@color/gold"
+                            android:textSize="14sp"/>
 
                         <TextView
                             android:id="@+id/gameViewRating"
@@ -59,7 +60,8 @@
                             android:layout_marginTop="8dp"
                             android:text="@string/gameRating"
                             android:textAppearance="?attr/textAppearanceBody2"
-                            android:textColor="#FFFFFF" />
+                            android:textColor="#FFFFFF"
+                            android:textSize="12sp"/>
 
                         <TextView
                             android:id="@+id/gameViewReleased"
@@ -68,7 +70,8 @@
                             android:layout_marginTop="16dp"
                             android:text="@string/gamesReleasedDate"
                             android:textAppearance="?attr/textAppearanceBody2"
-                            android:textColor="#FFFFFF" />
+                            android:textColor="#FFFFFF"
+                            android:textSize="12sp"/>
 
                     </LinearLayout>
 

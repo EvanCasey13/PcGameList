@@ -6,8 +6,6 @@ import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.firebase.database.*
-import kotlinx.android.synthetic.main.activity_games_list.*
-import kotlinx.android.synthetic.main.activity_games_list.recyclerView
 import kotlinx.android.synthetic.main.review_activity.toolbar
 import kotlinx.android.synthetic.main.review_list_activity.*
 import org.jetbrains.anko.startActivityForResult

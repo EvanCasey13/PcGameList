@@ -68,7 +68,8 @@
                         android:layout_height="wrap_content"
                         android:text="@string/databaseCardTitle"
                         android:textAppearance="?attr/textAppearanceHeadline6"
-                        android:textColor="@color/gold" />
+                        android:textColor="@color/gold"
+                        android:textSize="12sp"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -76,7 +77,8 @@
                         android:layout_marginTop="8dp"
                         android:text="@string/databaseCardSubTitle"
                         android:textAppearance="?attr/textAppearanceBody2"
-                        android:textColor="#FFFFFF" />
+                        android:textColor="#FFFFFF"
+                        android:textSize="12sp"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -84,7 +86,8 @@
                         android:layout_marginTop="16dp"
                         android:text="@string/databaseCardDescription"
                         android:textAppearance="?attr/textAppearanceBody2"
-                        android:textColor="#FFFFFF" />
+                        android:textColor="#FFFFFF"
+                        android:textSize="12sp"/>
 
                 </LinearLayout>
 
@@ -147,7 +150,8 @@
                         android:layout_height="wrap_content"
                         android:text="@string/reviewCardTitle"
                         android:textAppearance="?attr/textAppearanceHeadline6"
-                        android:textColor="@color/gold" />
+                        android:textColor="@color/gold"
+                        android:textSize="12sp"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -155,7 +159,8 @@
                         android:layout_marginTop="8dp"
                         android:text="@string/reviewCardSubTitle"
                         android:textAppearance="?attr/textAppearanceBody2"
-                        android:textColor="#FFFFFF" />
+                        android:textColor="#FFFFFF"
+                        android:textSize="12sp"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -163,7 +168,8 @@
                         android:layout_marginTop="16dp"
                         android:text="@string/reviewsCardDescription"
                         android:textAppearance="?attr/textAppearanceBody2"
-                        android:textColor="#FFFFFF" />
+                        android:textColor="#FFFFFF"
+                        android:textSize="12sp"/>
 
                 </LinearLayout>
 
