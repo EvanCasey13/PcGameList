@@ -78,7 +78,27 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="16dp"
-                            android:text="@string/gamesReleasedDate"
+                            android:text="@string/hint_gameReviewDescription"
+                            android:textAppearance="?attr/textAppearanceBody2"
+                            android:textColor="#FFFFFF"
+                            android:textSize="12sp"/>
+
+                        <TextView
+                            android:id="@+id/reviewCardUpdate"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="16dp"
+                            android:text="@string/updateReview"
+                            android:textAppearance="?attr/textAppearanceBody2"
+                            android:textColor="#FFFFFF"
+                            android:textSize="12sp"/>
+
+                        <TextView
+                            android:id="@+id/reviewCardDelete"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="16dp"
+                            android:text="@string/delete"
                             android:textAppearance="?attr/textAppearanceBody2"
                             android:textColor="#FFFFFF"
                             android:textSize="12sp"/>

@@ -1,6 +1,5 @@
 package org.wit.pcgamelist.activities
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import androidx.appcompat.app.AppCompatActivity
@@ -58,9 +57,5 @@ class DatabaseListActivity: AppCompatActivity(), AnkoLogger, GameListener {
     override fun onGameClick(game: Game) {
         startActivityForResult(intentFor<ReviewActivity>().putExtra("game_review", game), 0)
     }
-
-
-
-
 
 }

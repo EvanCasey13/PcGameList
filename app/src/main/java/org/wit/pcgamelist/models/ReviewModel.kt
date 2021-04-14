@@ -10,5 +10,7 @@ data class ReviewModel(
         constructor() : this("", "", "", "", ""){
 
         }
+
+        constructor(id: String, reviewUpdatedDescription: String) : this()
 }
 

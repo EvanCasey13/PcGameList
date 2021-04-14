@@ -43,7 +43,7 @@ class DatabaseListAdapter(val context: Context, private val listener: GameListen
         fun bind(game : Game, context:Context, listener : GameListener){
             gameName.text = game.name
             gameReleasedDate.text = game.released
-            gameRating.text = game.rating.toString()
+            gameRating.text = game.rating
 
             Glide.with(gameImage.context)
                 .load(game.background_image)

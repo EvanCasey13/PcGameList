@@ -26,11 +26,6 @@
                 android:layout_height="wrap_content"
                 android:background="@color/silver"/>
 
-            <ImageView
-                android:id="@+id/reviewImageView"
-                android:layout_width="match_parent"
-                android:layout_height="166dp"
-                app:srcCompat="@drawable/ic_launcher_background" />
         </com.google.android.material.appbar.AppBarLayout>
 
         <ScrollView
@@ -44,7 +39,14 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-                <EditText
+                <ImageView
+                    android:id="@+id/reviewImageView"
+                    android:layout_width="match_parent"
+                    android:layout_height="500dp"
+                    android:layout_gravity="center"
+                    android:scaleType="center" />
+
+                <TextView
                     android:id="@+id/reviewTitle"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
@@ -52,13 +54,12 @@
                     android:autofillHints=""
                     android:background="@color/grey"
                     android:hint="@string/hint_gameReviewTitle"
-                    android:inputType="text"
                     android:maxLength="50"
                     android:maxLines="1"
                     android:padding="8dp"
                     android:textSize="14sp" />
 
-                <EditText
+                <TextView
                     android:id="@+id/reviewRating"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
@@ -66,13 +67,10 @@
                     android:autofillHints=""
                     android:background="@color/grey"
                     android:hint="@string/review_rating"
-                    android:inputType="text"
-                    android:maxLength="500"
-                    android:maxLines="50"
                     android:padding="8dp"
                     android:textSize="14sp" />
 
-                <EditText
+                <TextView
                     android:id="@+id/reviewReleased"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
@@ -80,24 +78,22 @@
                     android:autofillHints=""
                     android:background="@color/grey"
                     android:hint="@string/review_released"
-                    android:inputType="text"
-                    android:maxLength="500"
-                    android:maxLines="50"
                     android:padding="8dp"
                     android:textSize="14sp" />
 
                 <EditText
                     android:id="@+id/reviewDescription"
                     android:layout_width="match_parent"
-                    android:layout_height="45dp"
+                    android:layout_height="230dp"
                     android:layout_margin="8dp"
                     android:autofillHints=""
                     android:hint="@string/hint_reviewDescription"
                     android:inputType="text"
-                    android:maxLength="500"
-                    android:maxLines="50"
+                    android:maxLength="30"
+                    android:maxLines="1"
                     android:padding="8dp"
                     android:textSize="14sp"
+                    android:gravity="start"
                     android:background="@color/grey"/>
 
                 <Button

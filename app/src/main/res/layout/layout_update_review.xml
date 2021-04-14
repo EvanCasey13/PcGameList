@@ -39,30 +39,17 @@
                 android:orientation="vertical">
 
                 <EditText
-                    android:id="@+id/reviewUpdateTitle"
-                    android:layout_width="match_parent"
-                    android:layout_height="45dp"
-                    android:layout_margin="8dp"
-                    android:autofillHints=""
-                    android:background="@color/grey"
-                    android:hint="@string/hint_gameReviewTitle"
-                    android:inputType="text"
-                    android:maxLength="50"
-                    android:maxLines="1"
-                    android:padding="8dp"
-                    android:textSize="14sp" />
-
-                <EditText
                     android:id="@+id/reviewUpdateDescription"
                     android:layout_width="match_parent"
-                    android:layout_height="45dp"
+                    android:layout_height="650dp"
                     android:layout_margin="8dp"
                     android:autofillHints=""
                     android:hint="@string/hint_reviewDescription"
-                    android:inputType="text"
-                    android:maxLength="500"
-                    android:maxLines="50"
+                    android:inputType="text|textMultiLine"
+                    android:maxLength="2000"
+                    android:maxLines="500"
                     android:padding="8dp"
+                    android:gravity="start"
                     android:textSize="14sp"
                     android:background="@color/grey"/>
 

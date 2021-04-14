@@ -3,6 +3,7 @@ package org.wit.pcgamelist.activities
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.bumptech.glide.Glide
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import kotlinx.android.synthetic.main.card_review.*
@@ -37,6 +38,9 @@ class ReviewActivity : AppCompatActivity(), AnkoLogger {
                 reviewRating.setText(aGame.rating)
                 reviewReleased.setText(aGame.released)
                 reviewDescription.setText(aReview.reviewDescription)
+                Glide.with(reviewImageView.context)
+                        .load(aGame.background_image)
+                        .into(reviewImageView)
             }
 
             btnAdd.setOnClickListener() {

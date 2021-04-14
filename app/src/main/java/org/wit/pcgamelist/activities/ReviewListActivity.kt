@@ -59,14 +59,9 @@ class ReviewListActivity : AppCompatActivity() {
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.menu_review, menu)
+        menuInflater.inflate(R.menu.menu_lists, menu)
         return super.onCreateOptionsMenu(menu)
     }
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when (item.itemId) {
-            R.id.item_add -> startActivityForResult<ReviewActivity>(0)
-        }
-        return super.onOptionsItemSelected(item)
-    }
+
 
 }

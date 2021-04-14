@@ -44,4 +44,5 @@
     <string name="delete">Delete</string>
     <string name="review_rating">Rating</string>
     <string name="review_released">Released</string>
+    <string name="hint_gameReviewDescription">Review Text</string>
 </resources>

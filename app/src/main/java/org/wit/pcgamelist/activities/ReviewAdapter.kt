@@ -7,9 +7,11 @@ import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.google.firebase.database.FirebaseDatabase
 import kotlinx.android.synthetic.main.card_review.view.*
 import kotlinx.android.synthetic.main.layout_update_review.view.*
+import kotlinx.android.synthetic.main.review_activity.*
 import org.wit.pcgamelist.R
 import org.wit.pcgamelist.models.ReviewModel
 
@@ -34,9 +36,9 @@ class ReviewAdapter constructor(private val reviews: List<ReviewModel>) : Recycl
 
     class MainHolder constructor(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-        /*
+
         val textViewUpdate = itemView.reviewCardUpdate
-        val textViewDelete = itemView.reviewCardDelete*/
+        val textViewDelete = itemView.reviewCardDelete
 
         fun bind(review: ReviewModel) {
             itemView.gameReviewTitle.text = review.gameTitle
@@ -44,15 +46,15 @@ class ReviewAdapter constructor(private val reviews: List<ReviewModel>) : Recycl
             itemView.gameReviewRating.text = review.gameRating
             itemView.gameReviewReleased.text = review.gameReleased
 
-            /*
+
+
             textViewUpdate.setOnClickListener {
                 showUpdateDialog(review)
             }
 
-            textViewDelete.setOnClickListener {
-
+          textViewDelete.setOnClickListener {
                 deleteReview(review)
-            }*/
+            }
 
         }
 
@@ -64,11 +66,7 @@ class ReviewAdapter constructor(private val reviews: List<ReviewModel>) : Recycl
 
             val view = inflater.inflate(R.layout.layout_update_review, null)
 
-            val updateTitle = view.findViewById<TextView>(R.id.reviewUpdateTitle)
-
             val updateDescription = view.findViewById<TextView>(R.id.reviewUpdateDescription)
-
-            updateTitle.text = review.gameTitle
 
             updateDescription.text = review.reviewDescription
 
@@ -78,21 +76,18 @@ class ReviewAdapter constructor(private val reviews: List<ReviewModel>) : Recycl
 
                 val dbReview = FirebaseDatabase.getInstance().getReference("reviews")
 
-                val titleUpdated = updateTitle.text.toString()
-
                 val reviewUpdatedDescription = updateDescription.text.toString()
 
-                if (titleUpdated.isEmpty() && reviewUpdatedDescription.isEmpty()){
-                    updateTitle.error = "Please enter the title of a game"
+                if (reviewUpdatedDescription.isEmpty()){
                     updateDescription.error = "Please enter your review of this game"
                     return@setPositiveButton
                 }
-             /*
-                val reviewUp = ReviewModel(review.id, titleUpdated, reviewUpdatedDescription)
+
+                val reviewUp = ReviewModel(review.id, reviewUpdatedDescription)
 
                 dbReview.child(review.id).setValue(reviewUp)
 
-                Toast.makeText(itemView.context, "Review Updated", Toast.LENGTH_LONG).show()*/
+                Toast.makeText(itemView.context, "Review Updated", Toast.LENGTH_LONG).show()
             }
 
             builder.setNegativeButton("Cancel") { dialog, which ->
