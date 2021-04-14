@@ -36,7 +36,7 @@ class SingleGame : AppCompatActivity() {
 
     }
 
-    fun bindUI( it: GameDetails){
+    fun bindUI(it: GameDetails){
         game_title.text = it.name
         game_description.text = it.description
         game_rating.text = it.metacritic.toString()
@@ -46,7 +46,6 @@ class SingleGame : AppCompatActivity() {
         Glide.with(game_poster)
                 .load(it.background_image)
                 .into(game_poster);
-
 
     }
 

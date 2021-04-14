@@ -42,4 +42,6 @@
     <string name="reviewsCardDescription">Reviews of you favourite games</string>
     <string name="my_reviewsHomeButton">My Reviews</string>
     <string name="delete">Delete</string>
+    <string name="review_rating">Rating</string>
+    <string name="review_released">Released</string>
 </resources>

@@ -34,13 +34,17 @@ class ReviewAdapter constructor(private val reviews: List<ReviewModel>) : Recycl
 
     class MainHolder constructor(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
+        /*
         val textViewUpdate = itemView.reviewCardUpdate
-        val textViewDelete = itemView.reviewCardDelete
+        val textViewDelete = itemView.reviewCardDelete*/
 
         fun bind(review: ReviewModel) {
-            itemView.reviewCardTitle.text = review.gameTitle
-            itemView.reviewCardDescription.text = review.reviewDescription
+            itemView.gameReviewTitle.text = review.gameTitle
+            itemView.gameReviewDescription.text = review.reviewDescription
+            itemView.gameReviewRating.text = review.gameRating
+            itemView.gameReviewReleased.text = review.gameReleased
 
+            /*
             textViewUpdate.setOnClickListener {
                 showUpdateDialog(review)
             }
@@ -48,7 +52,7 @@ class ReviewAdapter constructor(private val reviews: List<ReviewModel>) : Recycl
             textViewDelete.setOnClickListener {
 
                 deleteReview(review)
-            }
+            }*/
 
         }
 
@@ -83,12 +87,12 @@ class ReviewAdapter constructor(private val reviews: List<ReviewModel>) : Recycl
                     updateDescription.error = "Please enter your review of this game"
                     return@setPositiveButton
                 }
-
+             /*
                 val reviewUp = ReviewModel(review.id, titleUpdated, reviewUpdatedDescription)
 
                 dbReview.child(review.id).setValue(reviewUp)
 
-                Toast.makeText(itemView.context, "Review Updated", Toast.LENGTH_LONG).show()
+                Toast.makeText(itemView.context, "Review Updated", Toast.LENGTH_LONG).show()*/
             }
 
             builder.setNegativeButton("Cancel") { dialog, which ->

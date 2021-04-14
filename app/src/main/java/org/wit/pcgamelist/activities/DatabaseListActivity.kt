@@ -3,7 +3,6 @@ package org.wit.pcgamelist.activities
 import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
-import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -12,12 +11,13 @@ import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 import kotlinx.android.synthetic.main.database_list_activity.*
 import org.jetbrains.anko.AnkoLogger
+import org.jetbrains.anko.intentFor
 import org.wit.pcgamelist.R
 import org.wit.pcgamelist.main.MainApp
+import org.wit.pcgamelist.models.Game
 import org.wit.pcgamelist.models.GameViewModel
-import org.wit.pcgamelist.singlegamedetails.SingleGame
 
-class DatabaseListActivity: AppCompatActivity(), AnkoLogger {
+class DatabaseListActivity: AppCompatActivity(), AnkoLogger, GameListener {
 
     lateinit var app: MainApp
 
@@ -35,7 +35,7 @@ class DatabaseListActivity: AppCompatActivity(), AnkoLogger {
         toolbar.title = title
         setSupportActionBar(toolbar)
 
-        val adapter = DatabaseListAdapter(this)
+        val adapter = DatabaseListAdapter(this, this)
 
         games_recycler.layoutManager = LinearLayoutManager(this)
 
@@ -48,7 +48,6 @@ class DatabaseListActivity: AppCompatActivity(), AnkoLogger {
 
         games_recycler.adapter = adapter
 
-
     }
 
         override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -56,10 +55,12 @@ class DatabaseListActivity: AppCompatActivity(), AnkoLogger {
             return super.onCreateOptionsMenu(menu)
         }
 
-        override fun onOptionsItemSelected(item: MenuItem): Boolean {
+    override fun onGameClick(game: Game) {
+        startActivityForResult(intentFor<ReviewActivity>().putExtra("game_review", game), 0)
+    }
 
-            return super.onOptionsItemSelected(item)
-        }
+
+
 
 
 }

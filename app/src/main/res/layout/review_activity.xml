@@ -25,6 +25,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/silver"/>
+
+            <ImageView
+                android:id="@+id/reviewImageView"
+                android:layout_width="match_parent"
+                android:layout_height="166dp"
+                app:srcCompat="@drawable/ic_launcher_background" />
         </com.google.android.material.appbar.AppBarLayout>
 
         <ScrollView
@@ -53,6 +59,34 @@
                     android:textSize="14sp" />
 
                 <EditText
+                    android:id="@+id/reviewRating"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:layout_margin="8dp"
+                    android:autofillHints=""
+                    android:background="@color/grey"
+                    android:hint="@string/review_rating"
+                    android:inputType="text"
+                    android:maxLength="500"
+                    android:maxLines="50"
+                    android:padding="8dp"
+                    android:textSize="14sp" />
+
+                <EditText
+                    android:id="@+id/reviewReleased"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:layout_margin="8dp"
+                    android:autofillHints=""
+                    android:background="@color/grey"
+                    android:hint="@string/review_released"
+                    android:inputType="text"
+                    android:maxLength="500"
+                    android:maxLines="50"
+                    android:padding="8dp"
+                    android:textSize="14sp" />
+
+                <EditText
                     android:id="@+id/reviewDescription"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
@@ -76,8 +110,6 @@
                     android:stateListAnimator="@null"
                     android:text="@string/button_addReview"
                     android:textSize="16sp" />
-
-
 
             </LinearLayout>
         </ScrollView>

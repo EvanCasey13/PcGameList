@@ -14,7 +14,11 @@ import org.wit.pcgamelist.R
 import org.wit.pcgamelist.models.Game
 import org.wit.pcgamelist.singlegamedetails.SingleGame
 
-class DatabaseListAdapter(public val context: Context) : PagedListAdapter<Game, DatabaseListAdapter.GameViewHolder>(GAME_COMPARATOR) {
+interface GameListener {
+    fun onGameClick(game: Game)
+}
+
+class DatabaseListAdapter(val context: Context, private val listener: GameListener) : PagedListAdapter<Game, DatabaseListAdapter.GameViewHolder>(GAME_COMPARATOR) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GameViewHolder {
     val view  = LayoutInflater.from(parent.context)
@@ -24,19 +28,19 @@ class DatabaseListAdapter(public val context: Context) : PagedListAdapter<Game, 
     }
 
     override fun onBindViewHolder(holder: GameViewHolder, position: Int) {
-
         val game = getItem(position)
-        game?.let { getItem(position)?.let { it1 -> holder.bind(it1, context) } }
+        game?.let { getItem(position)?.let { it1 -> holder.bind(it1, context, listener) } }
     }
 
     class GameViewHolder(view : View) : RecyclerView.ViewHolder(view) {
 
+        private val gameCard = view.gameCard
         private val gameImage = view.gameImg
         private val gameName = view.gameViewTitle
         private val gameReleasedDate = view.gameViewReleased
         private val gameRating = view.gameViewRating
 
-        fun bind(game : Game, context:Context){
+        fun bind(game : Game, context:Context, listener : GameListener){
             gameName.text = game.name
             gameReleasedDate.text = game.released
             gameRating.text = game.rating.toString()
@@ -50,9 +54,12 @@ class DatabaseListAdapter(public val context: Context) : PagedListAdapter<Game, 
                 intent.putExtra("id", game.id)
                 context.startActivity(intent)
             }
+
+            gameCard.setOnClickListener {
+               listener.onGameClick(game)
+            }
+
         }
-
-
 
     }
 
@@ -63,8 +70,6 @@ class DatabaseListAdapter(public val context: Context) : PagedListAdapter<Game, 
 
             override fun areContentsTheSame(oldItem: Game, newItem: Game): Boolean =
                 newItem == oldItem
-
-
 
         }
     }
