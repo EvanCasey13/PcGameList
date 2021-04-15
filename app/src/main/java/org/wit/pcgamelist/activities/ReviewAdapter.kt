@@ -36,7 +36,6 @@ class ReviewAdapter constructor(private val reviews: List<ReviewModel>) : Recycl
 
     class MainHolder constructor(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-
         val textViewUpdate = itemView.reviewCardUpdate
         val textViewDelete = itemView.reviewCardDelete
 
@@ -45,8 +44,6 @@ class ReviewAdapter constructor(private val reviews: List<ReviewModel>) : Recycl
             itemView.gameReviewDescription.text = review.reviewDescription
             itemView.gameReviewRating.text = review.gameRating
             itemView.gameReviewReleased.text = review.gameReleased
-
-
 
             textViewUpdate.setOnClickListener {
                 showUpdateDialog(review)
@@ -66,7 +63,21 @@ class ReviewAdapter constructor(private val reviews: List<ReviewModel>) : Recycl
 
             val view = inflater.inflate(R.layout.layout_update_review, null)
 
-            val updateDescription = view.findViewById<TextView>(R.id.reviewUpdateDescription)
+            val updateTitle = view.findViewById<TextView>(R.id.reviewUpdatedTitle)
+
+            val updateReleased = view.findViewById<TextView>(R.id.reviewUpdatedReleased)
+
+            val updateRating = view.findViewById<TextView>(R.id.reviewUpdatedRating)
+
+            //val updateImage = view.findViewById<TextView>(R.id.reviewUpdatedImageView)
+
+            val updateDescription = view.findViewById<TextView>(R.id.reviewUpdatedDescription)
+
+            updateTitle.text = review.gameTitle
+
+            updateReleased.text = review.gameReleased
+
+            updateRating.text = review.gameRating
 
             updateDescription.text = review.reviewDescription
 
@@ -76,14 +87,20 @@ class ReviewAdapter constructor(private val reviews: List<ReviewModel>) : Recycl
 
                 val dbReview = FirebaseDatabase.getInstance().getReference("reviews")
 
-                val reviewUpdatedDescription = updateDescription.text.toString()
+                val reviewUpdatedTitle = updateTitle.text
+
+                val reviewUpdatedReleased = updateReleased.text
+
+                val reviewUpdatedRating = updateRating.text
+
+                val reviewUpdatedDescription = updateDescription.text
 
                 if (reviewUpdatedDescription.isEmpty()){
                     updateDescription.error = "Please enter your review of this game"
                     return@setPositiveButton
                 }
 
-                val reviewUp = ReviewModel(review.id, reviewUpdatedDescription)
+                val reviewUp = ReviewModel(review.id, reviewUpdatedTitle.toString(), reviewUpdatedReleased.toString(), reviewUpdatedRating.toString(), reviewUpdatedDescription.toString())
 
                 dbReview.child(review.id).setValue(reviewUp)
 

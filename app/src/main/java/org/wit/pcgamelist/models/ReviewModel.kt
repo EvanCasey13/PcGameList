@@ -11,6 +11,6 @@ data class ReviewModel(
 
         }
 
-        constructor(id: String, reviewUpdatedDescription: String) : this()
+
 }
 

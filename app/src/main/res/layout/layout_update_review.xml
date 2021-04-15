@@ -25,6 +25,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/silver"/>
+
         </com.google.android.material.appbar.AppBarLayout>
 
         <ScrollView
@@ -38,21 +39,55 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-                <EditText
-                    android:id="@+id/reviewUpdateDescription"
+                <TextView
+                    android:id="@+id/reviewUpdatedTitle"
                     android:layout_width="match_parent"
-                    android:layout_height="650dp"
+                    android:layout_height="45dp"
+                    android:layout_margin="8dp"
+                    android:autofillHints=""
+                    android:background="@color/grey"
+                    android:hint="@string/hint_gameReviewTitle"
+                    android:maxLength="50"
+                    android:maxLines="1"
+                    android:padding="8dp"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/reviewUpdatedRating"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:layout_margin="8dp"
+                    android:autofillHints=""
+                    android:background="@color/grey"
+                    android:hint="@string/review_rating"
+                    android:padding="8dp"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/reviewUpdatedReleased"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:layout_margin="8dp"
+                    android:autofillHints=""
+                    android:background="@color/grey"
+                    android:hint="@string/review_released"
+                    android:padding="8dp"
+                    android:textSize="14sp" />
+
+                <EditText
+                    android:id="@+id/reviewUpdatedDescription"
+                    android:layout_width="match_parent"
+                    android:layout_height="230dp"
                     android:layout_margin="8dp"
                     android:autofillHints=""
                     android:hint="@string/hint_reviewDescription"
-                    android:inputType="text|textMultiLine"
-                    android:maxLength="2000"
-                    android:maxLines="500"
+                    android:inputType="text"
+                    android:maxLength="30"
+                    android:maxLines="1"
                     android:padding="8dp"
-                    android:gravity="start"
                     android:textSize="14sp"
+                    android:gravity="start"
                     android:background="@color/grey"/>
-
 
             </LinearLayout>
         </ScrollView>
