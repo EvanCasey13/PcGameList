@@ -1,8 +1,4 @@
-# PcGameList
-
-<br />
- 
-  <h3 align="center">MyPCGameListApp</h3>
+  <h3 align="center">My PC Game List App</h3>
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
@@ -10,10 +6,10 @@ App built based on my personal interest in games, that contains a list of thousa
 
 ### Built With
 
-* [Kotlin]()
-* [Android Studio]()
-* [RAWG API]()
-* [Firebase]()
+* [Kotlin](https://kotlinlang.org/)
+* [Android Studio](https://developer.android.com/studio)
+* [RAWG API](https://rawg.io/apidocs)
+* [Firebase](https://firebase.google.com/docs/database)
 
 <!-- USAGE EXAMPLES -->
 ## Usage
