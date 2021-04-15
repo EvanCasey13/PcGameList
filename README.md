@@ -6,10 +6,10 @@ App built based on my personal interest in games, that contains a list of thousa
 
 ### Built With
 
-* [Kotlin](https://kotlinlang.org/)
-* [Android Studio](https://developer.android.com/studio)
-* [RAWG API](https://rawg.io/apidocs)
-* [Firebase](https://firebase.google.com/docs/database)
+* [Kotlin](https://kotlinlang.org/ target="_blank")
+* [Android Studio](https://developer.android.com/studio target="_blank")
+* [RAWG API](https://rawg.io/apidocs target="_blank")
+* [Firebase](https://firebase.google.com/docs/database target="_blank")
 
 <!-- USAGE EXAMPLES -->
 ## Usage
