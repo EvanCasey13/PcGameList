@@ -1,5 +1,7 @@
 package org.wit.pcgamelist.datasource
 
+import android.content.ContentValues.TAG
+import android.util.Log
 import androidx.paging.PageKeyedDataSource
 import org.wit.pcgamelist.models.Game
 import org.wit.pcgamelist.models.GameApiServiceBuilder
@@ -34,7 +36,7 @@ class GameDataSource : PageKeyedDataSource<Int, Game>() {
             }
 
             override fun onFailure(call: Call<GameResponse>, t: Throwable) {
-
+              Log.e(TAG, t.message!!)
             }
 
         })
@@ -60,7 +62,7 @@ class GameDataSource : PageKeyedDataSource<Int, Game>() {
             }
 
             override fun onFailure(call: Call<GameResponse>, t: Throwable) {
-
+                Log.e(TAG, t.message!!)
             }
 
         })
@@ -86,7 +88,7 @@ class GameDataSource : PageKeyedDataSource<Int, Game>() {
             }
 
             override fun onFailure(call: Call<GameResponse>, t: Throwable) {
-
+                Log.e(TAG, t.message!!)
             }
 
         })

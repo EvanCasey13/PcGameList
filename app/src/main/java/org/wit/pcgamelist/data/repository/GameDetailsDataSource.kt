@@ -9,7 +9,7 @@ import org.wit.pcgamelist.data.api.GamesApi
 import org.wit.pcgamelist.data.vo.GameDetails
 import java.lang.Exception
 
-class GameDetailsNetworkDataSource (private val apiService : GamesApi, private val compositeDisposable: CompositeDisposable){
+class GameDetailsDataSource (private val apiService : GamesApi, private val compositeDisposable: CompositeDisposable){
 
     private val _downloadedGameDetailsResponse = MutableLiveData<GameDetails>()
     val downloadedGameResponse: LiveData<GameDetails>

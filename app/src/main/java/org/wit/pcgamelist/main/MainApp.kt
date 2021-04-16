@@ -8,6 +8,6 @@ class MainApp : Application(), AnkoLogger {
 
     override fun onCreate() {
         super.onCreate()
-        info("PC Game List started")
+        info("PC Game List App started")
     }
 }

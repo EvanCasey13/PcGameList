@@ -81,12 +81,15 @@
                     android:layout_margin="8dp"
                     android:autofillHints=""
                     android:hint="@string/hint_reviewDescription"
-                    android:inputType="text"
-                    android:maxLength="30"
-                    android:maxLines="1"
+                    android:inputType="textMultiLine"
+                    android:lines="12"
+                    android:maxLines="12"
+                    android:minLines="6"
                     android:padding="8dp"
+                    android:maxLength="551"
                     android:textSize="14sp"
                     android:gravity="start"
+                    android:scrollbars="vertical"
                     android:background="@color/grey"/>
 
             </LinearLayout>
