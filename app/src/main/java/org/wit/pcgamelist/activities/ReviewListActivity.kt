@@ -2,13 +2,11 @@ package org.wit.pcgamelist.activities
 
 import android.os.Bundle
 import android.view.Menu
-import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.review_activity.toolbar
 import kotlinx.android.synthetic.main.review_list_activity.*
-import org.jetbrains.anko.startActivityForResult
 import org.jetbrains.anko.toast
 import org.wit.pcgamelist.R
 import org.wit.pcgamelist.main.MainApp
@@ -37,6 +35,7 @@ class ReviewListActivity : AppCompatActivity() {
 
         val layoutManager = LinearLayoutManager(this)
         recyclerView.layoutManager = layoutManager
+
 
         ref.addValueEventListener(object: ValueEventListener{
             override fun onDataChange(snapshot: DataSnapshot) {
