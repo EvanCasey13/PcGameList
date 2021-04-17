@@ -1,10 +1,14 @@
 package org.wit.pcgamelist.activities
 
+import android.content.ContentValues.TAG
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
-import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.*
+import com.google.firebase.database.core.Tag
+import io.reactivex.rxjava3.annotations.NonNull
 import kotlinx.android.synthetic.main.review_activity.*
 import org.jetbrains.anko.AnkoLogger
 import org.jetbrains.anko.info
@@ -60,13 +64,30 @@ class ReviewActivity : AppCompatActivity(), AnkoLogger {
         }
 
         val ref = FirebaseDatabase.getInstance().getReference("reviews")
+        val query: Query = ref
+                .child(getString(R.string.gameTitle))
+                .orderByChild("gameTitle")
+                .equalTo(gameName)
 
-        val reviewId = ref.push().key
+        query.addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(@NonNull dataSnapshot: DataSnapshot) {
+                if (dataSnapshot.childrenCount > 0) {
+                    Toast.makeText(applicationContext, "A Review for this game already exists", Toast.LENGTH_LONG).show()
+                } else {
+                    val reviewId = ref.push().key
 
-        val review = ReviewModel(reviewId!!, gameName, gameRating, gameReleased, reviewDescription)
+                    val review = ReviewModel(reviewId!!, gameName, gameRating, gameReleased, reviewDescription)
 
-        ref.child(reviewId).setValue(review)
-        Toast.makeText(applicationContext, "Review saved successfully", Toast.LENGTH_LONG).show()
+                    ref.child(reviewId).setValue(review)
+                    Toast.makeText(applicationContext, "Review saved successfully", Toast.LENGTH_LONG).show()
+                }
+            }
+
+            override fun onCancelled(databaseError: DatabaseError) {
+                Log.e(TAG, databaseError.message)
+            }
+        })
+
     }
 
 }
