@@ -9,15 +9,16 @@ import retrofit2.http.Path
 import retrofit2.http.Query
 
 //https://api.rawg.io/api/games/3498?key=fae5e07b82494776b3df9791c164ba3d
+//https://api.rawg.io/api/games?key=fae5e07b82494776b3df9791c164ba3d
 
 interface GamesApi {
 
-    @GET("games")
+    @GET("games?key=fae5e07b82494776b3df9791c164ba3d")
 
     fun getGames(@Query("page") page :Int): Call<GameResponse>
 
 
-    @GET("{id}")
+    @GET("{id}?key=fae5e07b82494776b3df9791c164ba3d")
     fun getGameDetails(@Path("id") id: Int): Single<GameDetails>
 
 
