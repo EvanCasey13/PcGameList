@@ -1,4 +1,4 @@
-  <h3 align="center">My PC Game List App</h3>
+  <h3 align="center">My Game List</h3>
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
