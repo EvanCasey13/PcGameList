@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@color/white">
@@ -47,6 +48,22 @@
                             android:textColor="@color/gold"
                             android:textSize="14sp"/>
 
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="start">
+
+                        <TextView
+                            android:id="@+id/gameRating"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:text="@string/gameRating"
+                            android:textAppearance="?attr/textAppearanceBody2"
+                            android:textColor="#FFFFFF"
+                            android:textSize="12sp"
+                            android:layout_marginEnd="47dp"/>
+
                         <TextView
                             android:id="@+id/gameReviewRating"
                             android:layout_width="wrap_content"
@@ -57,15 +74,38 @@
                             android:textColor="#FFFFFF"
                             android:textSize="12sp"/>
 
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="start">
+
+                        <TextView
+                            android:id="@+id/gameDate"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="1dp"
+                            android:text="@string/gamesReleasedDate"
+                            android:textAppearance="?attr/textAppearanceBody2"
+                            android:textColor="#FFFFFF"
+                            android:textSize="12sp"
+                            android:orientation="horizontal"
+                            android:layout_marginEnd="35dp"
+                            />
+
                         <TextView
                             android:id="@+id/gameReviewReleased"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="16dp"
+                            android:layout_marginTop="1dp"
                             android:text="@string/gamesReleasedDate"
                             android:textAppearance="?attr/textAppearanceBody2"
                             android:textColor="#FFFFFF"
+                            android:orientation="horizontal"
                             android:textSize="12sp"/>
+
+                        </LinearLayout>
 
                         <TextView
                             android:id="@+id/gameReviewDescription"
@@ -75,27 +115,40 @@
                             android:text="@string/hint_gameReviewDescription"
                             android:textAppearance="?attr/textAppearanceBody2"
                             android:textColor="#FFFFFF"
+                            android:background="@color/reviewGrey"
                             android:textSize="14sp" />
 
-                        <TextView
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center">
+
+                        <Button
                             android:id="@+id/reviewCardUpdate"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="16dp"
+                            android:layout_marginTop="10dp"
                             android:text="@string/updateReview"
                             android:textAppearance="?attr/textAppearanceBody2"
-                            android:textColor="#FFFFFF"
-                            android:textSize="12sp"/>
+                            android:textColor="#DDC8FF"
+                            android:background="@color/grey"
+                            android:textSize="12sp"
+                            tools:ignore="ButtonStyle"
+                            android:layout_marginEnd="20dp"/>
 
-                        <TextView
+                        <Button
                             android:id="@+id/reviewCardDelete"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="16dp"
+                            android:layout_marginTop="10dp"
                             android:text="@string/delete"
                             android:textAppearance="?attr/textAppearanceBody2"
-                            android:textColor="#FFFFFF"
-                            android:textSize="12sp"/>
+                            android:textColor="#DDC8FF"
+                            android:background="@color/grey"
+                            android:textSize="12sp"
+                            tools:ignore="ButtonStyle" />
+
+                    </LinearLayout>
 
                     </LinearLayout>
 

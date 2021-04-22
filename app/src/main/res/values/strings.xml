@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name" translatable="false">MyPcGameListApp</string>
+    <string name="app_name" translatable="false">My Game List</string>
     <string name="button_addGame" translatable="false">Add Game</string>
     <string name="hint_gameTitle" translatable="false">Game Title</string>
     <string name="hint_gameDescription">Game Description</string>
@@ -22,7 +22,7 @@
     <string name="gameDetailsButton">Details</string>
     <string name="gameTitle" />
     <string name="gameRating">Rating :</string>
-    <string name="gamesReleasedDate">Release Data :</string>
+    <string name="gamesReleasedDate">Released:</string>
     <string name="Next">Next Page</string>
     <string name="sub_title">SubTitle</string>
     <string name="game_info">Game Info</string>
@@ -45,4 +45,5 @@
     <string name="review_rating">Rating</string>
     <string name="review_released">Released</string>
     <string name="hint_gameReviewDescription">Review Text</string>
+    <string name="MyGameListAppIcon">MyGameListIcon</string>
 </resources>
