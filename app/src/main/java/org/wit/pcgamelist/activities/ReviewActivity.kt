@@ -1,14 +1,19 @@
 package org.wit.pcgamelist.activities
 
+import android.Manifest
 import android.content.ContentValues.TAG
+import android.graphics.Bitmap
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
+import androidx.core.graphics.drawable.toBitmap
 import com.bumptech.glide.Glide
 import com.google.firebase.database.*
-import com.google.firebase.database.core.Tag
 import io.reactivex.rxjava3.annotations.NonNull
+import kotlinx.android.synthetic.main.card_review.*
 import kotlinx.android.synthetic.main.review_activity.*
 import org.jetbrains.anko.AnkoLogger
 import org.jetbrains.anko.info
@@ -17,6 +22,10 @@ import org.wit.pcgamelist.R
 import org.wit.pcgamelist.main.MainApp
 import org.wit.pcgamelist.models.Game
 import org.wit.pcgamelist.models.ReviewModel
+import java.io.File
+import java.io.FileOutputStream
+import java.io.IOException
+
 
 class ReviewActivity : AppCompatActivity(), AnkoLogger {
 
@@ -36,16 +45,16 @@ class ReviewActivity : AppCompatActivity(), AnkoLogger {
 
             if (intent.hasExtra("game_review")) {
                 aGame = intent.extras?.getParcelable("game_review")!!
-                reviewTitle.setText(aGame.name)
-                reviewRating.setText(aGame.rating)
-                reviewReleased.setText(aGame.released)
+                reviewTitle.text = aGame.name
+                reviewRating.text = aGame.rating
+                reviewReleased.text = aGame.released
                 reviewDescription.setText(aReview.reviewDescription)
                 Glide.with(reviewImageView.context)
                         .load(aGame.background_image)
                         .into(reviewImageView)
             }
 
-            btnAdd.setOnClickListener() {
+            btnAdd.setOnClickListener {
                 saveReview()
                 info("add Button Pressed: $reviewTitle, $reviewDescription")
                 finish()
@@ -87,7 +96,7 @@ class ReviewActivity : AppCompatActivity(), AnkoLogger {
                 Log.e(TAG, databaseError.message)
             }
         })
-
     }
+
 
 }

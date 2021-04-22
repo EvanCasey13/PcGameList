@@ -47,6 +47,7 @@ class DatabaseListAdapter(val context: Context, private val listener: GameListen
 
             Glide.with(gameImage.context)
                 .load(game.background_image)
+                    .fitCenter()
                 .into(gameImage)
 
             gameImage.setOnClickListener {

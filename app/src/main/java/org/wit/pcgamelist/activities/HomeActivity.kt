@@ -1,14 +1,16 @@
 package org.wit.pcgamelist.activities
 
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.Menu
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
+import com.bumptech.glide.Glide
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
-import com.squareup.picasso.Picasso
+import kotlinx.android.synthetic.main.card_review.*
 import kotlinx.android.synthetic.main.mainactivity_pcgames.*
 import org.jetbrains.anko.AnkoLogger
 import org.wit.pcgamelist.R
@@ -33,19 +35,22 @@ class HomeActivity : AppCompatActivity(), AnkoLogger {
             toolbar.title = title
             setSupportActionBar(toolbar)
 
-            val picasso = Picasso.get()
-
-            picasso.load("https://static.wikia.nocookie.net/fallout/images/f/ff/FNV_box_art_%28US%29.jpg/revision/latest/scale-to-width-down/1000?cb=20150327233343")
+            Glide.with(databaseImg.context)
+                    .load("https://static.wikia.nocookie.net/fallout/images/f/ff/FNV_box_art_%28US%29.jpg/revision/latest/scale-to-width-down/1000?cb=20150327233343")
+                    .fitCenter()
                     .into(databaseImg)
 
-            picasso.load("https://upload.wikimedia.org/wikipedia/en/f/fd/Resident_Evil_2_Remake.jpg").into(listImg)
+            Glide.with(listImg.context)
+                    .load("https://upload.wikimedia.org/wikipedia/en/f/fd/Resident_Evil_2_Remake.jpg")
+                    .fitCenter()
+                    .into(listImg)
 
             onDatabaseButtonPressed()
-
 
             reviewsButton.setOnClickListener {
                 val intent = Intent(this, ReviewListActivity::class.java)
                 startActivity(intent)
+                
             }
 
         }

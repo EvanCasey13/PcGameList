@@ -97,7 +97,7 @@
                     android:textSize="14sp"
                     android:gravity="start"
                     android:scrollbars="vertical"
-                    android:background="@color/grey"/>
+                    android:background="@color/reviewGrey"/>
 
                 <Button
                     android:id="@+id/btnAdd"
