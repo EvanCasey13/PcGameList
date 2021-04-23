@@ -1,19 +1,20 @@
 package org.wit.pcgamelist.activities
 
-import android.Manifest
+import android.app.Activity
+import android.content.ContentValues
 import android.content.ContentValues.TAG
 import android.graphics.Bitmap
-import android.net.Uri
+import android.graphics.Canvas
 import android.os.Bundle
+import android.os.Environment
+import android.provider.MediaStore
 import android.util.Log
+import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.app.ActivityCompat
-import androidx.core.graphics.drawable.toBitmap
 import com.bumptech.glide.Glide
 import com.google.firebase.database.*
 import io.reactivex.rxjava3.annotations.NonNull
-import kotlinx.android.synthetic.main.card_review.*
 import kotlinx.android.synthetic.main.review_activity.*
 import org.jetbrains.anko.AnkoLogger
 import org.jetbrains.anko.info
@@ -22,9 +23,9 @@ import org.wit.pcgamelist.R
 import org.wit.pcgamelist.main.MainApp
 import org.wit.pcgamelist.models.Game
 import org.wit.pcgamelist.models.ReviewModel
+import java.io.ByteArrayOutputStream
 import java.io.File
-import java.io.FileOutputStream
-import java.io.IOException
+import java.util.*
 
 
 class ReviewActivity : AppCompatActivity(), AnkoLogger {
@@ -56,6 +57,7 @@ class ReviewActivity : AppCompatActivity(), AnkoLogger {
 
             btnAdd.setOnClickListener {
                 saveReview()
+                saveImage(reviewImageView, this)
                 info("add Button Pressed: $reviewTitle, $reviewDescription")
                 finish()
             }
@@ -98,5 +100,43 @@ class ReviewActivity : AppCompatActivity(), AnkoLogger {
         })
     }
 
+    fun saveImage(itemImage: View, activity: Activity) {
+        val fileName: String
+        val imageFromView = getBitmapFromView(itemImage)
+
+        ByteArrayOutputStream().apply {
+            imageFromView.compress(Bitmap.CompressFormat.JPEG, 100, this)
+            fileName = UUID.nameUUIDFromBytes(this.toByteArray()).toString().replace("-", "")
+        }
+
+        val imageFile =  File("${activity.getExternalFilesDir(Environment.DIRECTORY_PICTURES)}/ChatOut/$fileName.jpg/")
+
+        if (!imageFile.exists()) {
+
+            val contentResolver = ContentValues().apply {
+                put(MediaStore.Images.Media.DATE_ADDED, System.currentTimeMillis())
+                put(MediaStore.Images.Media.MIME_TYPE, "image/jpeg")
+                put(MediaStore.Images.Media.DATA, imageFile.absolutePath)
+            }
+
+            activity.contentResolver.insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, contentResolver).apply {
+                imageFromView.compress(Bitmap.CompressFormat.JPEG, 100, activity.contentResolver.openOutputStream(this!!))
+            }
+
+
+            Toast.makeText(activity, "saved", Toast.LENGTH_SHORT).show()
+        } else
+            Toast.makeText(activity, "Already saved", Toast.LENGTH_SHORT).show()
+    }
+
+
+
+    fun getBitmapFromView(view: View): Bitmap {
+        return Bitmap.createBitmap(view.width, view.height, Bitmap.Config.ARGB_8888).apply {
+            Canvas(this).apply {
+                view.draw(this)
+            }
+        }
+    }
 
 }

@@ -9,6 +9,7 @@ import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.google.firebase.database.FirebaseDatabase
+import kotlinx.android.synthetic.main.activity_single_game.view.*
 import kotlinx.android.synthetic.main.card_review.*
 import kotlinx.android.synthetic.main.card_review.view.*
 import kotlinx.android.synthetic.main.layout_update_review.view.*
