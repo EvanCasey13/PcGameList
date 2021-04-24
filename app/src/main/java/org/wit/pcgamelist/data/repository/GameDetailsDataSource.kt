@@ -9,11 +9,11 @@ import org.wit.pcgamelist.data.api.GamesApi
 import org.wit.pcgamelist.data.vo.GameDetails
 import java.lang.Exception
 
-class GameDetailsDataSource (private val apiService : GamesApi, private val compositeDisposable: CompositeDisposable){
+class GameDetailsDataSource(private val apiService: GamesApi, private val compositeDisposable: CompositeDisposable) {
 
     private val _downloadedGameDetailsResponse = MutableLiveData<GameDetails>()
     val downloadedGameResponse: LiveData<GameDetails>
-    get() = _downloadedGameDetailsResponse
+        get() = _downloadedGameDetailsResponse
 
     fun fetchGameDetails(gameId: Int) {
 
@@ -30,9 +30,7 @@ class GameDetailsDataSource (private val apiService : GamesApi, private val comp
                                     }
                             )
             )
-        }
-
-        catch (e: Exception){
+        } catch (e: Exception) {
             e.message?.let { Log.e("GameDetailsDataSource", it) }
         }
     }

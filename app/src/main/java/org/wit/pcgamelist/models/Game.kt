@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize
-data class Game (
+data class Game(
         @SerializedName("name")
         val name: String = "",
         @SerializedName("released")
@@ -13,12 +13,12 @@ data class Game (
         @SerializedName("rating")
         val rating: String = "",
         @SerializedName("background_image")
-        val background_image: String ="",
+        val background_image: String = "",
         @SerializedName("id")
         val id: Int = 0
-        ) : Parcelable
+) : Parcelable
 
-data class GameResponse (
+data class GameResponse(
 
         @SerializedName("count")
         val count: Int,

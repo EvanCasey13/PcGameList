@@ -14,14 +14,14 @@ object GameApiServiceBuilder {
 
     //create Retrofit builder
     private val builder = Retrofit.Builder()
-        .baseUrl(BASE_URL)
-        .addConverterFactory(GsonConverterFactory.create())
-        .client(okHttp.build())
+            .baseUrl(BASE_URL)
+            .addConverterFactory(GsonConverterFactory.create())
+            .client(okHttp.build())
 
     //create retrofit instance
     private val retrofit = builder.build()
 
-    fun<T> buildService(serviceType : Class<T>) : T {
+    fun <T> buildService(serviceType: Class<T>): T {
         return retrofit.create(serviceType)
     }
 }

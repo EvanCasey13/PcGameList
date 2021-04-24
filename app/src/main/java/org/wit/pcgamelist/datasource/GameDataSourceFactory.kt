@@ -9,8 +9,8 @@ class GameDataSourceFactory : DataSource.Factory<Int, Game>() {
     val gameLiveDataSource = MutableLiveData<GameDataSource>()
 
     override fun create(): DataSource<Int, Game> {
-    val gameDataSource =
-        GameDataSource()
+        val gameDataSource =
+                GameDataSource()
         gameLiveDataSource.postValue(gameDataSource)
 
         return gameDataSource

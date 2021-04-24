@@ -16,7 +16,7 @@ import org.wit.pcgamelist.main.MainApp
 import org.wit.pcgamelist.models.Game
 import org.wit.pcgamelist.models.GameViewModel
 
-class DatabaseListActivity: AppCompatActivity(), AnkoLogger, GameListener {
+class DatabaseListActivity : AppCompatActivity(), AnkoLogger, GameListener {
 
     lateinit var app: MainApp
 
@@ -39,7 +39,7 @@ class DatabaseListActivity: AppCompatActivity(), AnkoLogger, GameListener {
         games_recycler.layoutManager = LinearLayoutManager(this)
 
         val itemViewModel = ViewModelProviders.of(this)
-            .get(GameViewModel::class.java)
+                .get(GameViewModel::class.java)
 
         itemViewModel.gamePagedList.observe(this, {
             adapter.submitList(it)
@@ -49,10 +49,10 @@ class DatabaseListActivity: AppCompatActivity(), AnkoLogger, GameListener {
 
     }
 
-        override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-            menuInflater.inflate(R.menu.menu_lists, menu)
-            return super.onCreateOptionsMenu(menu)
-        }
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu_lists, menu)
+        return super.onCreateOptionsMenu(menu)
+    }
 
     override fun onGameClick(game: Game) {
         startActivityForResult(intentFor<ReviewActivity>().putExtra("game_review", game), 0)

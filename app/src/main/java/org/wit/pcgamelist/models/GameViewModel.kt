@@ -9,9 +9,9 @@ import org.wit.pcgamelist.datasource.GameDataSourceFactory
 
 class GameViewModel : ViewModel() {
 
-    val gamePagedList : LiveData<PagedList<Game>>
+    val gamePagedList: LiveData<PagedList<Game>>
 
-    private val liveDataSource : LiveData<GameDataSource>
+    private val liveDataSource: LiveData<GameDataSource>
 
     init {
         val itemDataSourceFactory = GameDataSourceFactory()
@@ -19,11 +19,11 @@ class GameViewModel : ViewModel() {
         liveDataSource = itemDataSourceFactory.gameLiveDataSource
 
         val config = PagedList.Config.Builder()
-            .setEnablePlaceholders(false)
-            .setPageSize(GameDataSource.PAGE_SIZE)
-            .build()
+                .setEnablePlaceholders(false)
+                .setPageSize(GameDataSource.PAGE_SIZE)
+                .build()
 
         gamePagedList = LivePagedListBuilder(itemDataSourceFactory, config)
-            .build()
+                .build()
     }
 }

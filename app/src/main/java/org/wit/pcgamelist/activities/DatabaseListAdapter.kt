@@ -21,8 +21,8 @@ interface GameListener {
 class DatabaseListAdapter(val context: Context, private val listener: GameListener) : PagedListAdapter<Game, DatabaseListAdapter.GameViewHolder>(GAME_COMPARATOR) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GameViewHolder {
-    val view  = LayoutInflater.from(parent.context)
-        .inflate(R.layout.layout_game, parent, false)
+        val view = LayoutInflater.from(parent.context)
+                .inflate(R.layout.layout_game, parent, false)
 
         return GameViewHolder(view)
     }
@@ -32,7 +32,7 @@ class DatabaseListAdapter(val context: Context, private val listener: GameListen
         game?.let { getItem(position)?.let { it1 -> holder.bind(it1, context, listener) } }
     }
 
-    class GameViewHolder(view : View) : RecyclerView.ViewHolder(view) {
+    class GameViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
         private val gameCard = view.gameCard
         private val gameImage = view.gameImg
@@ -40,15 +40,15 @@ class DatabaseListAdapter(val context: Context, private val listener: GameListen
         private val gameReleasedDate = view.gameViewReleased
         private val gameRating = view.gameViewRating
 
-        fun bind(game : Game, context:Context, listener : GameListener){
+        fun bind(game: Game, context: Context, listener: GameListener) {
             gameName.text = game.name
             gameReleasedDate.text = game.released
             gameRating.text = game.rating
 
             Glide.with(gameImage.context)
-                .load(game.background_image)
+                    .load(game.background_image)
                     .fitCenter()
-                .into(gameImage)
+                    .into(gameImage)
 
             gameImage.setOnClickListener {
                 val intent = Intent(context, SingleGame::class.java)
@@ -57,7 +57,7 @@ class DatabaseListAdapter(val context: Context, private val listener: GameListen
             }
 
             gameCard.setOnClickListener {
-               listener.onGameClick(game)
+                listener.onGameClick(game)
             }
 
         }
@@ -66,11 +66,11 @@ class DatabaseListAdapter(val context: Context, private val listener: GameListen
 
     companion object {
         private val GAME_COMPARATOR = object : DiffUtil.ItemCallback<Game>() {
-            override fun areItemsTheSame(oldItem: Game, newItem: Game): Boolean  =
-                oldItem.name == newItem.name
+            override fun areItemsTheSame(oldItem: Game, newItem: Game): Boolean =
+                    oldItem.name == newItem.name
 
             override fun areContentsTheSame(oldItem: Game, newItem: Game): Boolean =
-                newItem == oldItem
+                    newItem == oldItem
 
         }
     }

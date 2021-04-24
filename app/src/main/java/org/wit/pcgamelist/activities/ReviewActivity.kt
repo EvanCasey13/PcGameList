@@ -19,42 +19,42 @@ import org.wit.pcgamelist.models.ReviewModel
 
 class ReviewActivity : AppCompatActivity(), AnkoLogger {
 
-        var aGame = Game()
-        var aReview = ReviewModel()
-        lateinit var app: MainApp
+    var aGame = Game()
+    var aReview = ReviewModel()
+    lateinit var app: MainApp
 
-        override fun onCreate(savedInstanceState: Bundle?) {
+    override fun onCreate(savedInstanceState: Bundle?) {
 
-            super.onCreate(savedInstanceState)
-            setContentView(R.layout.review_activity)
-            app = application as MainApp
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.review_activity)
+        app = application as MainApp
 
-            //Add action bar and set title
-            toolbar.title = title
-            setSupportActionBar(toolbar)
+        //Add action bar and set title
+        toolbar.title = title
+        setSupportActionBar(toolbar)
 
-            if (intent.hasExtra("game_review")) {
-                aGame = intent.extras?.getParcelable("game_review")!!
-                reviewTitle.text = aGame.name
-                reviewRating.text = aGame.rating
-                reviewReleased.text = aGame.released
-                reviewDescription.setText(aReview.reviewDescription)
-                reviewImageUrl.text = aGame.background_image
-                reviewGameId.text = aGame.id.toString()
-                Glide.with(reviewImageView.context)
-                        .load(aGame.background_image)
-                        .into(reviewImageView)
-            }
-
-            btnAdd.setOnClickListener {
-                saveReview()
-
-                info("add Button Pressed: $reviewTitle, $reviewDescription")
-                finish()
-            }
+        if (intent.hasExtra("game_review")) {
+            aGame = intent.extras?.getParcelable("game_review")!!
+            reviewTitle.text = aGame.name
+            reviewRating.text = aGame.rating
+            reviewReleased.text = aGame.released
+            reviewDescription.setText(aReview.reviewDescription)
+            reviewImageUrl.text = aGame.background_image
+            reviewGameId.text = aGame.id.toString()
+            Glide.with(reviewImageView.context)
+                    .load(aGame.background_image)
+                    .into(reviewImageView)
         }
 
-    private fun saveReview(){
+        btnAdd.setOnClickListener {
+            saveReview()
+
+            info("add Button Pressed: $reviewTitle, $reviewDescription")
+            finish()
+        }
+    }
+
+    private fun saveReview() {
         val gameName = reviewTitle.text.toString()
         val gameRating = reviewRating.text.toString()
         val gameReleased = reviewReleased.text.toString()
@@ -62,7 +62,7 @@ class ReviewActivity : AppCompatActivity(), AnkoLogger {
         val reviewImageUrl = reviewImageUrl.text
         val reviewGameId = reviewGameId.text
 
-        if (reviewDescription.isEmpty()){
+        if (reviewDescription.isEmpty()) {
             toast("Please write your review")
             return
         }

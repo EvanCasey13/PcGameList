@@ -37,18 +37,18 @@ class ReviewListActivity : AppCompatActivity() {
         recyclerView.layoutManager = layoutManager
 
 
-        ref.addValueEventListener(object: ValueEventListener{
+        ref.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
-             if (snapshot.exists()){
-                 reviewList.clear()
-                 for (r in snapshot.children){
+                if (snapshot.exists()) {
+                    reviewList.clear()
+                    for (r in snapshot.children) {
 
-                     val review = r.getValue(ReviewModel::class.java)
-                     reviewList.add(review!!)
-                 }
-                 val adapter = ReviewAdapter(this@ReviewListActivity, reviewList)
-                 recyclerView.adapter = adapter
-             }
+                        val review = r.getValue(ReviewModel::class.java)
+                        reviewList.add(review!!)
+                    }
+                    val adapter = ReviewAdapter(this@ReviewListActivity, reviewList)
+                    recyclerView.adapter = adapter
+                }
             }
 
             override fun onCancelled(error: DatabaseError) {

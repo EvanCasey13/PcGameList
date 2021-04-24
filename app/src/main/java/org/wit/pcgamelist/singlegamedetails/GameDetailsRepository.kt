@@ -6,21 +6,18 @@ import org.wit.pcgamelist.data.api.GamesApi
 import org.wit.pcgamelist.data.repository.GameDetailsDataSource
 import org.wit.pcgamelist.data.vo.GameDetails
 
-class GameDetailsRepository (private val apiService : GamesApi) {
+class GameDetailsRepository(private val apiService: GamesApi) {
 
-    lateinit var gameDetailsNetworkDataSource: GameDetailsDataSource
+    lateinit var gameDetailsDataSource: GameDetailsDataSource
 
-    fun fetchSingleMovieDetails (compositeDisposable: CompositeDisposable, gameId: Int) : LiveData<GameDetails> {
+    fun fetchSingleGameDetails(compositeDisposable: CompositeDisposable, gameId: Int): LiveData<GameDetails> {
 
-        gameDetailsNetworkDataSource = GameDetailsDataSource(apiService,compositeDisposable)
-        gameDetailsNetworkDataSource.fetchGameDetails(gameId)
+        gameDetailsDataSource = GameDetailsDataSource(apiService, compositeDisposable)
+        gameDetailsDataSource.fetchGameDetails(gameId)
 
-        return gameDetailsNetworkDataSource.downloadedGameResponse
+        return gameDetailsDataSource.downloadedGameResponse
 
     }
-
-
-
 
 
 }

@@ -25,11 +25,11 @@ class ReviewAdapter constructor(val context: Context, private val reviews: List<
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainHolder {
         return MainHolder(
-            LayoutInflater.from(parent.context).inflate(
-                R.layout.card_review,
-                parent,
-                false
-            )
+                LayoutInflater.from(parent.context).inflate(
+                        R.layout.card_review,
+                        parent,
+                        false
+                )
         )
     }
 
@@ -62,7 +62,7 @@ class ReviewAdapter constructor(val context: Context, private val reviews: List<
                 showUpdateDialog(review)
             }
 
-          textViewDelete.setOnClickListener {
+            textViewDelete.setOnClickListener {
                 deleteReview(review)
             }
 
@@ -74,7 +74,7 @@ class ReviewAdapter constructor(val context: Context, private val reviews: List<
 
         }
 
-        fun showUpdateDialog(review: ReviewModel) {
+        private fun showUpdateDialog(review: ReviewModel) {
             val builder = AlertDialog.Builder(itemView.context)
             builder.setTitle("Update Review")
 
@@ -124,7 +124,7 @@ class ReviewAdapter constructor(val context: Context, private val reviews: List<
 
                 val reviewUpdatedGameId = updateGameId.text
 
-                if (reviewUpdatedDescription.isEmpty()){
+                if (reviewUpdatedDescription.isEmpty()) {
                     updateDescription.error = "Please enter your review of this game"
                     return@setPositiveButton
                 }
@@ -143,12 +143,11 @@ class ReviewAdapter constructor(val context: Context, private val reviews: List<
             alert.show()
         }
 
-        fun deleteReview(review: ReviewModel){
+        private fun deleteReview(review: ReviewModel) {
 
             val dbReview = FirebaseDatabase.getInstance().getReference("reviews")
 
             dbReview.child(review.id).setValue(null)
-
 
 
         }

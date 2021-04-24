@@ -9,9 +9,9 @@ data class ReviewModel(
         val background_image: String,
         val gameId: Int = 0) {
 
-        constructor() : this("", "", "", "", "", ""){
+    constructor() : this("", "", "", "", "", "") {
 
-        }
+    }
 
 
 }

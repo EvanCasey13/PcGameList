@@ -15,7 +15,7 @@ interface GamesApi {
 
     @GET("games?key=fae5e07b82494776b3df9791c164ba3d")
 
-    fun getGames(@Query("page") page :Int): Call<GameResponse>
+    fun getGames(@Query("page") page: Int): Call<GameResponse>
 
 
     @GET("{id}?key=fae5e07b82494776b3df9791c164ba3d")

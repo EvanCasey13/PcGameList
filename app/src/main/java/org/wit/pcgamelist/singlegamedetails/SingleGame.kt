@@ -22,9 +22,9 @@ class SingleGame : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_single_game)
 
-        val gameId: Int = intent.getIntExtra("id",1)
+        val gameId: Int = intent.getIntExtra("id", 1)
 
-        val apiService : GamesApi = TheGameDBClient.getClient()
+        val apiService: GamesApi = TheGameDBClient.getClient()
         gameRepository = GameDetailsRepository(apiService)
 
         viewModel = getViewModel(gameId)
@@ -36,7 +36,7 @@ class SingleGame : AppCompatActivity() {
 
     }
 
-    fun bindUI(it: GameDetails){
+    fun bindUI(it: GameDetails) {
         game_title.text = it.name
         game_description.text = it.description
         game_rating.text = it.metacritic.toString()
@@ -50,11 +50,11 @@ class SingleGame : AppCompatActivity() {
     }
 
 
-    private fun getViewModel(gameId:Int): SingleGameViewModel {
+    private fun getViewModel(gameId: Int): SingleGameViewModel {
         return ViewModelProviders.of(this, object : ViewModelProvider.Factory {
             override fun <T : ViewModel?> create(modelClass: Class<T>): T {
                 @Suppress("UNCHECKED_CAST")
-                return SingleGameViewModel(gameRepository,gameId) as T
+                return SingleGameViewModel(gameRepository, gameId) as T
             }
         })[SingleGameViewModel::class.java]
     }
