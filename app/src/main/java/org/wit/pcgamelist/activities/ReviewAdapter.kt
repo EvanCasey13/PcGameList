@@ -1,6 +1,8 @@
 package org.wit.pcgamelist.activities
 
 import android.app.AlertDialog
+import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,12 +14,14 @@ import com.google.firebase.database.FirebaseDatabase
 import kotlinx.android.synthetic.main.activity_single_game.view.*
 import kotlinx.android.synthetic.main.card_review.*
 import kotlinx.android.synthetic.main.card_review.view.*
+import kotlinx.android.synthetic.main.layout_game.view.*
 import kotlinx.android.synthetic.main.layout_update_review.view.*
 import kotlinx.android.synthetic.main.review_activity.*
 import org.wit.pcgamelist.R
 import org.wit.pcgamelist.models.ReviewModel
+import org.wit.pcgamelist.singlegamedetails.SingleGame
 
-class ReviewAdapter constructor(private val reviews: List<ReviewModel>) : RecyclerView.Adapter<ReviewAdapter.MainHolder>() {
+class ReviewAdapter constructor(val context: Context, private val reviews: List<ReviewModel>) : RecyclerView.Adapter<ReviewAdapter.MainHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainHolder {
         return MainHolder(
@@ -31,7 +35,7 @@ class ReviewAdapter constructor(private val reviews: List<ReviewModel>) : Recycl
 
     override fun onBindViewHolder(holder: MainHolder, position: Int) {
         val review = reviews[holder.adapterPosition]
-        holder.bind(review)
+        holder.bind(review, context)
     }
 
     override fun getItemCount(): Int = reviews.size
@@ -40,12 +44,19 @@ class ReviewAdapter constructor(private val reviews: List<ReviewModel>) : Recycl
 
         val textViewUpdate = itemView.reviewCardUpdate
         val textViewDelete = itemView.reviewCardDelete
+        private val gameImage = itemView.game_review_poster
 
-        fun bind(review: ReviewModel) {
+
+        fun bind(review: ReviewModel, context: Context) {
             itemView.gameReviewTitle.text = review.gameTitle
             itemView.gameReviewDescription.text = review.reviewDescription
             itemView.gameReviewRating.text = review.gameRating
             itemView.gameReviewReleased.text = review.gameReleased
+
+            Glide.with(gameImage.context)
+                    .load(review.background_image)
+                    .fitCenter()
+                    .into(gameImage)
 
             textViewUpdate.setOnClickListener {
                 showUpdateDialog(review)
@@ -53,7 +64,12 @@ class ReviewAdapter constructor(private val reviews: List<ReviewModel>) : Recycl
 
           textViewDelete.setOnClickListener {
                 deleteReview(review)
+            }
 
+            gameImage.setOnClickListener {
+                val intent = Intent(context, SingleGame::class.java)
+                intent.putExtra("id", review.gameId)
+                context.startActivity(intent)
             }
 
         }
@@ -72,9 +88,11 @@ class ReviewAdapter constructor(private val reviews: List<ReviewModel>) : Recycl
 
             val updateRating = view.findViewById<TextView>(R.id.reviewUpdatedRating)
 
-            //val updateImage = view.findViewById<TextView>(R.id.reviewUpdatedImageView)
-
             val updateDescription = view.findViewById<TextView>(R.id.reviewUpdatedDescription)
+
+            val updateImg = view.findViewById<TextView>(R.id.reviewUpdatedImage)
+
+            val updateGameId = view.findViewById<TextView>(R.id.reviewUpdatedGameId)
 
             updateTitle.text = review.gameTitle
 
@@ -83,6 +101,10 @@ class ReviewAdapter constructor(private val reviews: List<ReviewModel>) : Recycl
             updateRating.text = review.gameRating
 
             updateDescription.text = review.reviewDescription
+
+            updateImg.text = review.background_image
+
+            updateGameId.text = review.gameId.toString()
 
             builder.setView(view)
 
@@ -98,12 +120,16 @@ class ReviewAdapter constructor(private val reviews: List<ReviewModel>) : Recycl
 
                 val reviewUpdatedDescription = updateDescription.text
 
+                val reviewUpdatedImage = updateImg.text
+
+                val reviewUpdatedGameId = updateGameId.text
+
                 if (reviewUpdatedDescription.isEmpty()){
                     updateDescription.error = "Please enter your review of this game"
                     return@setPositiveButton
                 }
 
-                val reviewUp = ReviewModel(review.id, reviewUpdatedTitle.toString(), reviewUpdatedReleased.toString(), reviewUpdatedRating.toString(), reviewUpdatedDescription.toString())
+                val reviewUp = ReviewModel(review.id, reviewUpdatedTitle.toString(), reviewUpdatedReleased.toString(), reviewUpdatedRating.toString(), reviewUpdatedDescription.toString(), reviewUpdatedImage.toString(), reviewUpdatedGameId.toString().toInt())
 
                 dbReview.child(review.id).setValue(reviewUp)
 

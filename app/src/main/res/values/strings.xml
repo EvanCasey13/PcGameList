@@ -46,4 +46,7 @@
     <string name="review_released">Released</string>
     <string name="hint_gameReviewDescription">Review Text</string>
     <string name="MyGameListAppIcon">MyGameListIcon</string>
+    <string name="hint_reviewImageUrl">Image Url</string>
+    <string name="review_UpdatedImage">UpdatedImage</string>
+    <string name="review_game_id">gameId</string>
 </resources>

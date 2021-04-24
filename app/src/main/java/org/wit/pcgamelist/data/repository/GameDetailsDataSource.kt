@@ -35,7 +35,5 @@ class GameDetailsDataSource (private val apiService : GamesApi, private val comp
         catch (e: Exception){
             e.message?.let { Log.e("GameDetailsDataSource", it) }
         }
-
-
     }
 }

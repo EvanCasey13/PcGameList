@@ -92,6 +92,30 @@
                     android:scrollbars="vertical"
                     android:background="@color/grey"/>
 
+                <TextView
+                    android:id="@+id/reviewUpdatedImage"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_margin="8dp"
+                    android:autofillHints=""
+                    android:background="@color/grey"
+                    android:hint="@string/review_UpdatedImage"
+                    android:visibility="invisible"
+                    android:padding="8dp"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/reviewUpdatedGameId"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_margin="8dp"
+                    android:autofillHints=""
+                    android:background="@color/grey"
+                    android:hint="@string/review_UpdatedImage"
+                    android:visibility="invisible"
+                    android:padding="8dp"
+                    android:textSize="14sp" />
+
             </LinearLayout>
         </ScrollView>
     </RelativeLayout>

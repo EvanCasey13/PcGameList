@@ -46,7 +46,7 @@ class ReviewListActivity : AppCompatActivity() {
                      val review = r.getValue(ReviewModel::class.java)
                      reviewList.add(review!!)
                  }
-                 val adapter = ReviewAdapter(reviewList)
+                 val adapter = ReviewAdapter(this@ReviewListActivity, reviewList)
                  recyclerView.adapter = adapter
              }
             }
