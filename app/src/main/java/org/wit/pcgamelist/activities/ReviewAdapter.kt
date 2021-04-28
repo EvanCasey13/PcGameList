@@ -144,12 +144,22 @@ class ReviewAdapter constructor(val context: Context, private val reviews: List<
         }
 
         private fun deleteReview(review: ReviewModel) {
+            val builder = AlertDialog.Builder(itemView.context)
+            builder.setTitle("Delete Review")
+                    .setMessage("Are you sure you want to delete this Review?")
 
-            val dbReview = FirebaseDatabase.getInstance().getReference("reviews")
+            builder.setPositiveButton("Delete") { dialog, which ->
+                val dbReview = FirebaseDatabase.getInstance().getReference("reviews")
 
-            dbReview.child(review.id).setValue(null)
+                dbReview.child(review.id).setValue(null)
+            }
 
+            builder.setNegativeButton("Cancel") { dialog, which ->
+            }
 
+            val alert = builder.create()
+            alert.show()
         }
+
     }
 }
